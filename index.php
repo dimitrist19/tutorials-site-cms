@@ -28,15 +28,9 @@ mysqli_close($conn);
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preload" as="style" href="assets/css/mbr-additional.css"><link rel="stylesheet" href="assets/css/mbr-additional.css" type="text/css">
-
-
-
     </head>
     <body>
         <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0" style="margin-bottom: 20px;">
-
-
-
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <div class="hamburger">
@@ -55,29 +49,20 @@ mysqli_close($conn);
                                 </div>
                                 </div>
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white display-4" href="index.html#header2-1">Home</a></li><li class="nav-item">
-                                            <a class="nav-link link text-white display-4" href="tutorials.php">
-
-                                                Video Tutorials</a>
-                                        </li>
+                                    <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                                        <li class="nav-item"><a class="nav-link link text-white display-4" href="index.html#header2-1">Home</a></li>
+                                        <li class="nav-item"><a class="nav-link link text-white display-4" href="tutorials.php">Video Tutorials</a></li>
                                         <li class="nav-item"><a class="nav-link link text-white display-4" href="#next"><i class="fa fa-search"></i>  Search</a></li>
                                     </ul>
-
                                 </div>
                                 </nav>
                                 </section>
 
                                 <section class="engine"></section><section class="cid-qTkA127IK8 mbr-fullscreen mbr-parallax-background" id="header2-1">
-
-
-
-
-
                                     <div class="container align-center">
                                         <div class="row justify-content-md-center">
                                             <div class="mbr-white col-md-10">
                                                 <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Free Hosting Video Tutorials</h1>
-
                                                 <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong><em><?= $row['hostname'] ?> - Video Library</em></strong></p>
                                                 <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="tutorials.php">Click here to watch our video tutorials</a></div>
                                             </div>
@@ -110,14 +95,7 @@ mysqli_close($conn);
                                     </div>
                                 </section>
 
-
-
                                 <section class="cid-rEPlBpa0xu" id="footer1-1g">
-
-
-
-
-
                                     <div class="container">
                                         <div class="media-container-row content text-white">
                                             <div class="col-12 col-md-3">
@@ -151,7 +129,6 @@ mysqli_close($conn);
                                                     </p>
                                                 </div>
                                                 <div class="col-md-6">
-
                                                 </div>
                                             </div>
                                         </div>
