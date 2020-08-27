@@ -42,7 +42,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `logourl`, `hostname`, `faviconurl`, `supporturl`, `knowledgebaseurl`, `homeurl`) VALUES
-(1, 'https://www.adventureabroad.com.au/wp-content/uploads/2013/06/demo-logo.png', 'DemoSite', 'https://www.adventureabroad.com.au/wp-content/uploads/2013/06/demo-logo.png', 'https://demosite.com/support', 'https://demosite.com/kb', 'https://demosite.com');
+(1, 'https://www.adventureabroad.com.au/wp-content/uploads/2013/06/demo-logo.png', 'DemoSite', 'https://www.adventureabroad.com.au/wp-content/uploads/2013/06/demo-logo.png', 'https://demowebsite.com/support', 'https://demowebsite.com/kb', 'https://demowebsite.com');
 
 -- --------------------------------------------------------
 
