@@ -1,8 +1,6 @@
 <?php
 include '../config.php';
 $result = mysqli_query($conn, "SELECT * FROM tutorials");
-
-mysqli_close($conn);
 ?>
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
@@ -17,6 +15,8 @@ if (!isset($_SESSION['loggedin'])) {
 
     exit();
 }
+$result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row1 = mysqli_fetch_array($result1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@ if (!isset($_SESSION['loggedin'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | Tutorials</title>
+        <title>Tutorials Site CMS | Tutorials</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -34,6 +34,11 @@ if (!isset($_SESSION['loggedin'])) {
         <link rel="stylesheet" href="dist/css/adminlte.min.css">
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- DataTables -->
+        <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -76,10 +81,8 @@ if (!isset($_SESSION['loggedin'])) {
             <aside class="main-sidebar sidebar-dark-primary elevation-4">
                 <!-- Brand Logo -->
                 <a href="index.php" class="brand-link">
-                    <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
-                         style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image" style="opacity: .8">
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -90,7 +93,7 @@ if (!isset($_SESSION['loggedin'])) {
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row1['fullname']?></a>
                         </div>
                     </div>
 
@@ -150,7 +153,7 @@ if (!isset($_SESSION['loggedin'])) {
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -201,7 +204,7 @@ if (!isset($_SESSION['loggedin'])) {
                             <div class="col-sm-6">
                                 <h1 class="m-0 text-dark">Manage Your Tutorials     <a href="addnew.php"><button class="btn btn-primary btn-sm">Add New</button></a></h1>
                                 <!--<div align="right">-->
-                                    
+
                                 <!--</div>-->
                             </div><!-- /.col -->
                             <div class="col-sm-6">
@@ -223,31 +226,34 @@ if (!isset($_SESSION['loggedin'])) {
                                 <br>
                                 <div class="card">
                                     <!-- /.card-header -->
-                                    <div class="card-body p-0">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th style="width: 40px">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                while ($row = mysqli_fetch_array($result)) {
-                                                    echo "<tr>";
-                                                    echo '<td>' . $row['title'] . '</td>';
-                                                    echo '<td><a href="edit.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i></a><a href="delete.php?id=' . $row['id'] . '">  <i class="fa fa-trash text-danger"></i></a></td>';
-                                                    echo "</tr>";
-                                                }
-                                                ?>
-                                            </tbody>
-                                        </table>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">                
+                                                <table id="tutorialstable" class="table table-bordered table-striped">
+                                                    <thead>
+                                                        <tr role="row">
+                                                            <th>Title</th>
+                                                            <th style="width: 60px;">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        while ($row = mysqli_fetch_array($result)) {
+                                                            echo "<tr>";
+                                                            echo '<td>' . $row['title'] . '</td>';
+                                                            echo '<td><a href="edit.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i></a><a href="delete.php?id=' . $row['id'] . '">  <i class="fa fa-trash text-danger"></i></a><a target="_blank" href="../tutorials.php?id=' . $row['id'] . '">  <i class="fa fa-eye text-secondary"></i></a></td>';
+                                                            echo "</tr>";
+                                                        }
+                                                        ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- /.card-body -->
                                 </div>
+                                <!-- /.card-body -->
                             </div>
                         </div>
-
                         <!-- /.row -->
                     </div><!-- /.container-fluid -->
                 </div>
@@ -275,5 +281,29 @@ if (!isset($_SESSION['loggedin'])) {
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
+        <!-- DataTables -->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+        <script>
+            $(function () {
+                $('#tutorialstable').DataTable({
+                    "columns": [
+                        null,
+                        {"orderable": false}
+                    ],
+                    "paging": true,
+                    "lengthChange": true,
+                    "searching": true,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": true,
+                    "responsive": true
+                });
+            }
+            );
+        </script>
     </body>
 </html>
+

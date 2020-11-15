@@ -1,6 +1,5 @@
 <?php
 //***DO NOT CHANGE THIS FILE. THIS FILE CONTAINS SUPPORT INFORMATION FOR THE SCRIPT***
-
 // We need to use sessions, so you should always start sessions using the below code.
 
 session_start();
@@ -14,6 +13,8 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 include '../config.php';
+$result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row1 = mysqli_fetch_array($result1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@ include '../config.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | Support</title>
+        <title>Tutorials Site CMS | Support</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -75,8 +76,7 @@ include '../config.php';
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -87,7 +87,7 @@ include '../config.php';
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row1['fullname'] ?></a>
                         </div>
                     </div>
 
@@ -147,7 +147,7 @@ include '../config.php';
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -214,26 +214,59 @@ include '../config.php';
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-lg-12">
-                                <p>The software comes with no warranty but if encounter any problems feel free to open an issue in GitHub</p>
-                                <a href="https://github.com/dimitrist19/tutorials-site-cms/issues/new" class="btn btn-gradient btn-primary" target="_blank">Create an issue</a>
-                                <p>You may also contact me at my Discord Server: <a href="https://discord.gg/wwJbMup"><b>https://discord.gg/wwJbMup</b></p></a>
-                                <br>
-                                <div class="col-lg-4">
-                                    <div class="card card-secondary" style="transition: all 0.15s ease 0s; height: inherit; width: inherit;">
-                                        <div class="card-header">
-                                            <h3 class="card-title">Currently Open Issues</h3>
+                                <div class="card">
+                                    <div class='card-body'>
+                                        <p>The software comes with no warranty but if encounter any problems feel free to open an issue in GitHub</p>
+                                        <a href="https://github.com/dimitrist19/tutorials-site-cms/issues/new" class="btn btn-gradient btn-primary" target="_blank">Create an issue</a>
+                                        <p>You may also contact me at my Discord Server: <a href="https://discord.gg/wwJbMup"><b>https://discord.gg/wwJbMup</b></p></a>
+                                        <br>
+                                        <div class="col-lg-4">
+                                            <div class="card card-secondary" style="transition: all 0.15s ease 0s; height: inherit; width: inherit;">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Currently Open Issues</h3>
 
-                                            <div class="card-tools">
-                                                <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
-                                                </button>
+                                                    <div class="card-tools">
+                                                        <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
+                                                        </button>
+                                                    </div>
+                                                    <!-- /.card-tools -->
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body">
+                                                    <div id="github-issues"></div>
+                                                </div>
+                                                <!-- /.card-body -->
                                             </div>
-                                            <!-- /.card-tools -->
                                         </div>
-                                        <!-- /.card-header -->
-                                        <div class="card-body">
-                                            <div id="github-issues"></div>
+                                        <div>
+                                            <div class="dropdown-divider"></div>
+                                            <div id="accordion">
+                                                <h3>FAQ <i class="fa fa-question-circle"></i></h3>
+                                                <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
+                                                <div class="card card-secondary">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">
+                                                                What's New?
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                                        <div class="card-body">
+                                                            <h5><b>Changelog</b></h5>
+                                                            <p>V1.1</p>
+                                                            <ul>
+                                                                <li>Improved UI in some pages</li>
+                                                                <li>Bug Fixes</li>
+                                                                <li>Improved Editor Integration</li>
+                                                                <li>Added 'VP CUSTOMIZATION' section</li>
+                                                                <li>Datatable for Tutorial List with 'View' action</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <!-- /.card-body -->
                                     </div>
                                 </div>
                             </div>

@@ -12,6 +12,8 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 include '../config.php';
+$result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row1 = mysqli_fetch_array($result1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +22,7 @@ include '../config.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | About</title>
+        <title>Tutorials Site CMS | About</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -73,8 +75,7 @@ include '../config.php';
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -85,7 +86,7 @@ include '../config.php';
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row1['fullname']?></a>
                         </div>
                     </div>
 
@@ -145,7 +146,7 @@ include '../config.php';
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -223,6 +224,7 @@ include '../config.php';
                                             <p><b>The copyright notices must be included with all pages of the script.</b> If you wish to remove them please open a support ticket on my <a href="https://discord.gg/wwJbMup">discord server</a> 
                                             <div class="dropdown-divider"></div>
                                             <h3>About the script</h3>
+                                            <p>Version: <code>V1.1</code></p>
                                             <p>Through 'Tutorials Site' CMS you can easily create a video tutorial site for your hosting business</p>
                                             <font size='small' color='grey'>*The script includes tools especially for web hosting video tutorial site but it may be used from non web hosting providers/sites.</font>
                                             <br>

@@ -39,14 +39,14 @@ $tresult = mysqli_query($conn, "SELECT * FROM tutorials");
                 <div class="menu-logo">
                     <div class="navbar-brand">
                         <span class="navbar-logo"><a href="index.php"><img src="<?= $row['logourl'] ?>" alt="Logo" style="height: 3.8rem;"></a></span>
-                        <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-1" href="index.php#header2-1">VT</a></span>
+                        <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-1" href="index.php#header2-1"></a></span>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
                         <li class="nav-item"><a class="nav-link link text-white display-4" href="index.php#header2-1">Home</a></li>
                         <li class="nav-item"><a class="nav-link link text-white display-4" href="tutorials.php">Video Tutorials</a></li>
-                        <li class="nav-item"><a class="nav-link link text-white display-4" href="index.php#next"><i class="fa fa-search"></i>  Search</a></li>
+                        <li class="nav-item"><a class="nav-link link text-white display-4" href="index.php#next">&nbsp;<i class="fa fa-search"></i></a></li>
                     </ul>
                 </div>
             </nav>

@@ -19,8 +19,11 @@ if (count($_POST) > 0) {
 }
 ?>
 <?php
+session_start();
 $result = mysqli_query($conn, "SELECT * FROM tutorials WHERE id={$_GET['id']}");
 $row = mysqli_fetch_array($result);
+$result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row1 = mysqli_fetch_array($result1);
 
 mysqli_close($conn);
 ?>
@@ -45,7 +48,7 @@ if (!isset($_SESSION['loggedin'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | Edit Tutorial</title>
+        <title>Tutorials Site CMS | Edit Tutorial</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -99,8 +102,7 @@ if (!isset($_SESSION['loggedin'])) {
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -111,7 +113,7 @@ if (!isset($_SESSION['loggedin'])) {
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row1['fullname']?></a>
                         </div>
                     </div>
 
@@ -171,7 +173,7 @@ if (!isset($_SESSION['loggedin'])) {
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -318,8 +320,19 @@ if (!isset($_SESSION['loggedin'])) {
                 $('#summernote').summernote();
             });
             $('#summernote').summernote({
+                placeholder: 'Here you can explain the tutorial further or make a How-To sections. You can include images, text & more...',
                 tabsize: 2,
                 height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['codeview', 'help', 'undo', 'redo']],
+                ],
             });
         </script>
     </body>

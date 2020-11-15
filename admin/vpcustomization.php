@@ -11,6 +11,8 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 include '../config.php';
+$result = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +21,7 @@ include '../config.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | VP Customization</title>
+        <title>Tutorials Site CMS | VP Customization</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -72,8 +74,7 @@ include '../config.php';
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -84,7 +85,7 @@ include '../config.php';
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row['fullname']?></a>
                         </div>
                     </div>
 
@@ -144,7 +145,7 @@ include '../config.php';
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -213,9 +214,18 @@ include '../config.php';
                         <div class="row">
                             <div class="col-lg-12">
                                 <p>You can place this code in header's ad section of your VistaPanel and it will replace the 'Tutorials' link. <b>Don't forget to change http://yourdomain.com with your tutorial's installation url</b></p>
-                                <font color="red"><b>This section in one of the next versions will include a code for you to change tutorials button in cPanel</b></font>
+                                <code>&lt;script type=&quot;text/javascript&quot;&gt;  <br />
+                                <br />
+                                var b = {  <br />
+                                tutorial : &quot;http://yourdomain.com&quot;,   <br />
+                                }  <br />
+                                <br />
+                                &lt;/script&gt;  <br />
+                                &lt;script src=&quot;https://cdn.jsdelivr.net/gh/VPTOfficial/VistaPanel-Customizations/tutorial-link-changer/tutorial-link-changer.js&quot; type=&quot;text/javascript&quot;&gt;<br />&lt;/script&gt;</code>
+                                <br />
+                                <br />
                                 <div class="callout callout-info">
-                                    <p>You may use <a href='https://github.com/WybeNetwork/VistaPanel-Customizations/tree/master/tutorial-link-changer'>'Tutorial Link Changer'</a> by WybeNetwork if changing the tutorial link is required.</p>
+                                    <p>Credit: <a href='https://github.com/WybeNetwork/VistaPanel-Customizations/tree/master/tutorial-link-changer'>'Tutorial Link Changer'</a> by WybeNetwork</p>
                                 </div>
                             </div>
                         </div>

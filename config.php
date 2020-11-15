@@ -16,4 +16,6 @@ error_reporting(0); //Set to -1 if you want to see php errors
 
 //DON'T EDIT
 $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
+
+
 ?>

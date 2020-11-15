@@ -6,9 +6,11 @@ if (!isset($_GET['id'])) {
 
     exit();
 }
-
+session_start();
 $result = mysqli_query($conn, "SELECT * FROM tutorials WHERE id = {$_GET['id']}");
 $row = mysqli_fetch_array($result);
+$result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row1 = mysqli_fetch_array($result1);
 
 mysqli_close($conn);
 ?>
@@ -45,7 +47,7 @@ if (count($_POST) > 0) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | Admin Area</title>
+        <title>Tutorials Site CMS | Admin Area</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -98,8 +100,7 @@ if (count($_POST) > 0) {
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -110,7 +111,7 @@ if (count($_POST) > 0) {
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row1['fullname']?></a>
                         </div>
                     </div>
 
@@ -170,7 +171,7 @@ if (count($_POST) > 0) {
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -241,7 +242,7 @@ if (count($_POST) > 0) {
                                 <?php
                                 if (count($_POST) > 0) {
                                     if ($conn->query($sql) === TRUE) {
-                                        echo '<h1 class="text-success">Success!</h1>';
+                                        echo '<h1 class="alert alert-success">Success!</h1>';
                                     } else {
                                         echo "Error deleting record: " . $conn->error;
                                     }

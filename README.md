@@ -1,12 +1,13 @@
 <h1>Tutorials Site CMS</h1>
 Through 'Tutorials Site' CMS you can easily create a video tutorial site for your hosting business!
 
-<h3>The V1 (Beta) of this CMS includes:</h3>
+<h3>The V1.1 of this CMS includes:</h3>
 
 <b>ADMIN INTERFACE:</b>
 - One Admin Account (multiple users might be added in a future version)
 - Add/Edit/Remove Tutorials (title, embed code, description, further explanation &/or how to)
 - Manage your logo, favicon, host name, support url, knowledgebase url and home url
+- VP Customization (Changes tutorial link to your preferred url)
 
 <b>USER INTERFACE:</b>
 - Default Template (you may code your own using html & css)

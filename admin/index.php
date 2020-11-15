@@ -12,6 +12,11 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 include '../config.php';
+$query = "SELECT COUNT(*) FROM tutorials";
+$resulttut = mysqli_query($conn,$query);
+$rows = mysqli_fetch_row($resulttut);
+$result = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +25,7 @@ include '../config.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | Admin Area</title>
+        <title>Tutorials Site CMS | Admin Area</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -73,8 +78,7 @@ include '../config.php';
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -85,7 +89,7 @@ include '../config.php';
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row['fullname']?></a>
                         </div>
                     </div>
 
@@ -145,7 +149,7 @@ include '../config.php';
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -210,9 +214,43 @@ include '../config.php';
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <p>There's nothing here in V1. You can navigate through the menu. Some content will be included here in the next version.</p>
-                                <a href="https://github.com/dimitrist19/tutorials-site-cms/issues/new" target="_blank" class="btn btn-info">Have an idea?</a>
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small card -->
+                                        <div class="small-box bg-info">
+                                            <div class="inner">
+                                                <h3><?= $rows[0] ?></h3>
+
+                                                <p>Tutorials</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fas fa-book-reader"></i>
+                                            </div>
+                                            <a href="tutorials.php" class="small-box-footer">
+                                                Manage your tutorials <i class="fas fa-arrow-circle-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-6">
+                                        <!-- small card -->
+                                        <div class="small-box bg-warning">
+                                            <div class="inner">
+                                                <h3><i class="fa fa-question"></i></h3>
+
+                                                <p>Have questions?</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fas fa-headset"></i>
+                                            </div>
+                                            <a href="support.php" class="small-box-footer">
+                                                Ask for help <i class="fas fa-arrow-circle-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <!-- ./col -->
+                                </div>
                             </div>
                         </div>
 

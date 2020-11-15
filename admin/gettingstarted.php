@@ -12,6 +12,8 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 include '../config.php';
+$result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
+$row1 = mysqli_fetch_array($result1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +22,7 @@ include '../config.php';
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | Getting Started Guide</title>
+        <title>Tutorials Site CMS | Getting Started Guide</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -73,8 +75,7 @@ include '../config.php';
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
@@ -85,7 +86,7 @@ include '../config.php';
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
+                            <a href="profile.php" class="d-block"><?= $row1['fullname']?></a>
                         </div>
                     </div>
 
@@ -145,7 +146,7 @@ include '../config.php';
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -213,7 +214,7 @@ include '../config.php';
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
-                                    <h5 class="card-header">Welcome! This is a short guide on how to get started with 'Tutorials Site CMS V1(BETA)':</h5>
+                                    <h5 class="card-header">Welcome! This is a short guide on how to get started with 'Tutorials Site CMS V1.1':</h5>
                                     <div class="card-body">
                                         <p>1) Go to <a href="https://google.com/recaptcha">Google's Recaptcha site</a> and obtain keys for the site. The add those keys into config.php in the installation folder (not the config.php of admin folder)</p>
                                         <p>2) For security reasons change the admin's password <a href="profile.php">here</a> (the password changer won't work if you don't obtain recaptcha keys)</p>

@@ -7,12 +7,17 @@ session_start();
 
 if (!isset($_SESSION['loggedin'])) {
 
-header('Location: login.php');
+    header('Location: login.php');
 
-exit();
+    exit();
 }
 include '../config.php';
-$result = mysqli_query($conn, "SELECT * FROM users WHERE id=1");
+
+if (count($_POST) > 0) {
+    $updateprofile = mysqli_query($conn, "UPDATE users SET fullname='" . $_POST['name'] . "' WHERE id={$_SESSION['id']}");
+    $message1 = '<p class="alert alert-success">Profile Updated!</p>';
+}
+$result = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
 $row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>
@@ -22,7 +27,7 @@ $row = mysqli_fetch_array($result);
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site V1 | User Profile</title>
+        <title>Tutorials Site CMS | User Profile</title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -75,21 +80,22 @@ $row = mysqli_fetch_array($result);
                 <a href="index.php" class="brand-link">
                     <img src="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg" alt="Icon" class="brand-image"
                          style="opacity: .8">
-                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> V1</span>
-                    <span class="right badge badge-info">Beta</span>
+                    <span class="brand-text font-weight-light"><b>Tutorials Site</b> CMS</span>
                 </a>
 
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+                    <a href="profile.php" class="d-block">
+                        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                            <div class="image">
+                                <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+                            </div>
+                            <div class="info">
+                                <?= $row['fullname'] ?>
+                            </div>
                         </div>
-                        <div class="info">
-                            <a href="profile.php" class="d-block">System Admin</a>
-                        </div>
-                    </div>
+                    </a>
 
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
@@ -147,7 +153,7 @@ $row = mysqli_fetch_array($result);
                                     <i class="nav-icon fas fa-palette"></i>
                                     <p>
                                         VP Customization
-                                        <span class="right badge badge-danger">N/A</span>
+                                        <span class="right badge badge-success">NEW</span>
                                     </p>
                                 </a>
                             </li>
@@ -213,21 +219,81 @@ $row = mysqli_fetch_array($result);
                 <div class="content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card card-primary">
-                                    <div class="card-header">
-                                        <h3 class="card-title">Your Details</h3>
-                                    </div>
-                                    <!-- /.card-header -->
-                                    <?php
-                                    echo '<div class = "m-3">';
-                                    echo '<p><b>Username: </b>' . $row['username'] . '</p>';
-                                    echo '<p><b>Name: </b>' . $row['fullname'] . '</p>';
-                                    echo '<a href = "passwordchange.php?id='. $row['id'] .'">Change Password</a>';
-                                    echo '</div>';
-                                    ?>
-                                    <!-- /.card-body -->
-                                </div>
+                            <div class="col-lg-12">
+                                <!-- Main content -->
+                                <section class="content">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-3">
+
+                                                <!-- Profile Image -->
+                                                <div class="card card-primary card-outline">
+                                                    <div class="card-body box-profile">
+                                                        <div class="text-center">
+                                                            <img class="profile-user-img img-fluid img-circle"
+                                                                 src="build/img/avatar.png"
+                                                                 alt="User profile picture">
+                                                        </div>
+
+                                                        <h3 class="profile-username text-center"><?= $row['fullname'] ?></h3>
+
+                                                        <p class="text-muted text-center"><?= $row['username'] ?></p>
+
+                                                        <a href="passwordchange.php" class="btn btn-primary btn-block"><b>Change Password</b></a>
+                                                    </div>
+                                                    <!-- /.card-body -->
+                                                </div>
+                                                <!-- /.card -->
+                                            </div>
+                                            <!-- /.col -->
+                                            <div class="col-md-9">
+                                                <div class="card">
+                                                    <div class="card-header p-2">
+                                                        <ul class="nav nav-pills">
+                                                            <li class="nav-item"><a class="nav-link active" href="#details" data-toggle="tab">Details</a></li>
+                                                        </ul>
+                                                    </div><!-- /.card-header -->
+                                                    <div class="card-body">
+                                                        <div class="tab-content">
+                                                            <div class="active tab-pane" id="details">
+                                                                <form class="form-horizontal" method="post">
+                                                                    <?php
+                                                                    if (isset($message1)) {
+                                                                        echo $message1;
+                                                                    }
+                                                                    ?>
+                                                                    <div class="form-group row">
+                                                                        <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                                                                        <div class="col-sm-10">
+                                                                            <input name="name" type="text" value="<?= $row['fullname'] ?>" class="form-control" id="inputName" placeholder="Name">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <label for="inputName" class="col-sm-2 col-form-label">Username</label>
+                                                                        <div class="col-sm-10">
+                                                                            <?= $row['username'] ?>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group row">
+                                                                        <div class="offset-sm-2 col-sm-10">
+                                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <!-- /.tab-pane -->
+                                                        </div>
+                                                        <!-- /.tab-content -->
+                                                    </div><!-- /.card-body -->
+                                                </div>
+                                                <!-- /.nav-tabs-custom -->
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                        <!-- /.row -->
+                                    </div><!-- /.container-fluid -->
+                                </section>
+                                <!-- /.content -->
                             </div>
                         </div>
 
@@ -258,5 +324,10 @@ $row = mysqli_fetch_array($result);
         <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="dist/js/adminlte.min.js"></script>
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
     </body>
 </html>
