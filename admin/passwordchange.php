@@ -26,7 +26,7 @@ if (count($_POST) > 0) {
             if ($_POST['currentPassword'] == $_POST['newPassword']) {
                 $message = '<p class="alert alert-warning">New Password cannot be the same as your Old Password!</p>';
             } else {
-                mysqli_query($conn, "UPDATE users SET password='" . password_hash($_POST["newPassword"], PASSWORD_DEFAULT) . "' WHERE id= {$_POST['id']}");
+                mysqli_query($conn, "UPDATE users SET password='" . password_hash($_POST["newPassword"], PASSWORD_DEFAULT) . "' WHERE id= {$_SESSION['id']}");
                 $message = '<p class="alert alert-success">Password Changed</p>';
             }
         } else {
@@ -51,7 +51,6 @@ if (count($_POST) > 0) {
         <link rel="stylesheet" href="dist/css/adminlte.min.css">
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-        <script src='https://www.google.com/recaptcha/api.js'></script>
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -257,7 +256,6 @@ if (count($_POST) > 0) {
                                             <div class="g-recaptcha" data-sitekey="<?= $sitekey ?>" id="verify"></div>
                                             </tr>
                                             <tr>
-                                            <input value='<?= $_GET['id'] ?>' name='id' hidden>
                                             <tr>
                                                 <td colspan="2"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></td>
                                             </tr>
@@ -328,6 +326,7 @@ if (count($_POST) > 0) {
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
+	<script src='https://www.google.com/recaptcha/api.js'></script>
     <!-- Recaptcha -->
     <script>
                                     function goBack() {
