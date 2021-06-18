@@ -7,15 +7,7 @@ if (isset($_SESSION['loggedin'])) {
 
     //exit();
 } else if (count($_POST) > 0) {
-    include '../config.php';
-    $captcha = $_POST['g-recaptcha-response'];
-    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secretkey . "&response=" . $captcha);
-    $responseKeys = json_decode($response, true);
-    //if (intval($responseKeys["success"]) !== 1) {
-      //  $message = '<p class="alert alert-danger">Invalid Captcha!</p>';
-    //}
-// Now we check if the data from the login form was submitted, isset() will check if the data exists.
-    //else {
+    require '../config.php';
         if (!isset($_POST['username'], $_POST['password'])) {
 
             // Could not get the data that should have been sent.

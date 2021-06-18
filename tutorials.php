@@ -1,5 +1,6 @@
 <?php
-include 'config.php';
+include 'includes/check.php';
+require 'config.php';
 $result = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
 $row = mysqli_fetch_array($result);
 $tresult = mysqli_query($conn, "SELECT * FROM tutorials");
@@ -91,6 +92,7 @@ $tresult = mysqli_query($conn, "SELECT * FROM tutorials");
     </div>
 </section>';
             } else {
+                $tutorial['id'] = $_GET['id'];
                 echo '<section class="header7 cid-rEMpe1dCB9">
     <div class="container">
         <div class="media-container-row">
@@ -106,6 +108,8 @@ $tresult = mysqli_query($conn, "SELECT * FROM tutorials");
         </div>
     </div>
 </section>';
+                ?>
+                <?php
                 if (!isset($row3['body'])) {
                     
                 } else if (is_null($row3['body'])) {
@@ -149,7 +153,7 @@ $tresult = mysqli_query($conn, "SELECT * FROM tutorials");
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2020 <b><a href="<?= $row['homeurl'] ?>"><?= $row['hostname'] ?></a></b> - Tutorials Site V1 by <b><a href="https://github.com/dimitrist19">Dimitris T.</a></b>
+                                © Copyright 2021 <b><a href="<?= $row['homeurl'] ?>"><?= $row['hostname'] ?></a></b> - Tutorials Site CMS by <b><a href="https://github.com/dimitrist19">Dimitris T.</a></b>
                             </p>
                         </div>
                         <div class="col-md-6">

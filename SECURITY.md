@@ -1,13 +1,13 @@
 # Security Policy
 
-## Supported Versions
+With each new version, possible security problems will be fixed. Therefore any previous versions will be out of support.
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+## Supported Versions
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.1   | :white_check_mark: |
+| 1.2   | :white_check_mark: |
+| 1.1   | :x: |
 | 1.0 (BETA)   | :x: |
 
 ## Reporting a Vulnerability

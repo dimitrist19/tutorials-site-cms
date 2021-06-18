@@ -1,1 +1,0 @@
-Some of this files may not needed currently but are provided by AdminLTE (theme) and might used in a future version
