@@ -1,10 +1,6 @@
 <?php
 //***DO NOT CHANGE THIS FILE. THIS FILE CONTAINS SUPPORT INFORMATION FOR THE SCRIPT***
-// We need to use sessions, so you should always start sessions using the below code.
-
 session_start();
-
-// If the user is not logged in redirect to the login page...
 
 if (!isset($_SESSION['loggedin'])) {
 
@@ -12,7 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     exit();
 }
-include '../config.php';
+require '../config.php';
 $result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
 $row1 = mysqli_fetch_array($result1);
 ?>
@@ -21,149 +17,125 @@ $page = 'support';
 require_once 'templates/header.tpl.php';
 ?>
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1 class="m-0 text-dark">Support</h1>
-                            </div><!-- /.col -->
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                    <li class="breadcrumb-item active">Support</li>
-                                </ol>
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content-header -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Support</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item active">Support</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
-                <!-- Main content -->
-                <div class="content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class='card-body'>
-                                        <p>The software comes with no warranty but if encounter any problems feel free to open an issue in GitHub</p>
-                                        <a href="https://github.com/dimitrist19/tutorials-site-cms/issues/new" class="btn btn-gradient btn-primary" target="_blank">Create an issue</a>
-                                        <p>You may also contact me at my Discord Server: <a href="https://discord.gg/wwJbMup"><b>https://discord.gg/wwJbMup</b></p></a>
-                                        <br>
-                                        <div class="col-lg-4">
-                                            <div class="card card-secondary" style="transition: all 0.15s ease 0s; height: inherit; width: inherit;">
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class='card-body'>
+                            <h4>Support options are listed below</h4>
+                            <hr />
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td class="col-sm-2"><strong><i class="fas fa-bug"></i> Bug/Issue/Error Report</strong></td>
+                                    <td class="col-sm-10">You can report any issue or bug you notice in this CMS by creating an issue in GitHub <a href="https://github.com/dimitrist19/tutorials-site-cms/issues/new" class="btn btn-small btn-gradient btn-secondary" target="_blank"><i class="fas fa-flag"></i> Create an issue</a>&nbsp;<a href="https://github.com/dimitrist19/tutorials-site-cms/issues/" class="btn btn-small btn-gradient btn-secondary" target="_blank"><i class="fas fa-external-link-alt"></i> View open issues</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-2"><strong><i class="fas fa-headset"></i> Direct Support</strong></td>
+                                    <td class="col-sm-10">Need direct support? You can create a support ticket and i'll try to get back to you within  48 hours. <a href="https://service.dtprojects.eu.org/support/index.php?a=add&catid=4&custom1=Tutorials Site CMS&custom2=v<?= $version ?>" class="btn btn-small btn-gradient btn-secondary" target="_blank"><i class="fas fa-ticket-alt"></i> Create support ticket</a>&nbsp;<a href="https://service.dtprojects.eu.org/support/ticket.php" class="btn btn-small btn-gradient btn-secondary" target="_blank"> <i class="fas fa-file-alt"></i> View existing ticket</a></td>
+                                </tr>
+                                <tr>
+                                    <td class="col-sm-2"><strong><i class="fas fa-life-ring"></i> Other</strong></td>
+                                    <td class="col-sm-10">
+                                        <i class="fas fa-envelope"></i><strong> support@dtprojects.eu.org</strong> (*connected to helpdesk)
+                                        <p><i class="fab fa-discord"></i> Discord Server: <a href="https://discord.gg/wwJbMup"><b>https://discord.gg/wwJbMup</b></a></p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <code><strong>Note: The software comes neither with warranty or guaranteed support<strong></code>
+                                        <hr />
+                                        <div id="accordion">
+                                            <h3>FAQ <i class="fa fa-question-circle"></i></h3>
+                                            <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
+                                            <div class="card card-secondary">
                                                 <div class="card-header">
-                                                    <h3 class="card-title">Currently Open Issues</h3>
-
-                                                    <div class="card-tools">
-                                                        <button type="button" class="btn btn-tool" data-card-widget="maximize"><i class="fas fa-expand"></i>
-                                                        </button>
+                                                    <h4 class="card-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">
+                                                            What's New?
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse in">
+                                                    <div class="card-body">
+                                                        <h5><b>Change Log</b></h5>
+                                                        <p>V1.2</p>
+                                                        <ul>
+                                                            <li>Improved UI in some pages</li>
+                                                            <li>Bug Fixes</li>
+                                                            <li>Code Optimization</li>
+                                                            <li>Backup & Export tool (in beta phase)</li>
+                                                            <li>Installer / Updater (in beta phase)</li>
+                                                        </ul>
+                                                        <p>V1.1</p>
+                                                        <ul>
+                                                            <li>Improved UI in some pages</li>
+                                                            <li>Bug Fixes</li>
+                                                            <li>Improved Editor Integration</li>
+                                                            <li>Added 'VP CUSTOMIZATION' section</li>
+                                                            <li>Datatable for Tutorial List with 'View' action</li>
+                                                        </ul>
                                                     </div>
-                                                    <!-- /.card-tools -->
                                                 </div>
-                                                <!-- /.card-header -->
-                                                <div class="card-body">
-                                                    <div id="github-issues"></div>
-                                                </div>
-                                                <!-- /.card-body -->
                                             </div>
-                                        </div>
-                                        <div>
-                                            <div class="dropdown-divider"></div>
-                                            <div id="accordion">
-                                                <h3>FAQ <i class="fa fa-question-circle"></i></h3>
-                                                <!-- we are adding the .class so bootstrap.js collapse plugin detects it -->
-                                                <div class="card card-secondary">
-                                                    <div class="card-header">
-                                                        <h4 class="card-title">
-                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true">
-                                                                What's New?
-                                                            </a>
-                                                        </h4>
-                                                    </div>
-                                                    <div id="collapseOne" class="panel-collapse collapse in">
-                                                        <div class="card-body">
-                                                            <h5><b>Change Log</b></h5>
-                                                            <p>V1.2</p>
-                                                            <ul>
-                                                                <li>Improved UI in some pages</li>
-                                                                <li>Bug Fixes</li>
-                                                                <li>Code Optimization</li>
-                                                                <li>Backup & Export tool (in beta phase)</li>
-                                                                <li>Installer / Updater (in beta phase)</li>
-                                                            </ul>
-                                                            <p>V1.1</p>
-                                                            <ul>
-                                                                <li>Improved UI in some pages</li>
-                                                                <li>Bug Fixes</li>
-                                                                <li>Improved Editor Integration</li>
-                                                                <li>Added 'VP CUSTOMIZATION' section</li>
-                                                                <li>Datatable for Tutorial List with 'View' action</li>
-                                                            </ul>
-                                                        </div>
+                                            <div class="card card-secondary">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true">
+                                                            The CMS has an issue. When it will be fixed?
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse in">
+                                                    <div class="card-body">
+                                                        <p>There is no guaranteed ETA for when each issue will be resolved. However, security issues are prioritized first to resolve and then other functional issues.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
 
-                        <!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content -->
-            </div>
-            <!-- /.content-wrapper -->
+                                        <!-- /.row -->
+                                        </div>
+                                        </div>
+                                        <!-- /.content-wrapper -->
 
-            <?php
-            require_once 'templates/footer.tpl.php';
-            ?>
-        <!-- ./wrapper -->
+                                        <?php
+                                        require_once 'templates/footer.tpl.php';
+                                        ?>
+                                        <!-- ./wrapper -->
 
-        <!-- REQUIRED SCRIPTS -->
+                                        <!-- REQUIRED SCRIPTS -->
 
-        <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
-        <script>
-            var urlToGetAllOpenBugs = "https://api.github.com/repos/dimitrist19/tutorials-site-cms/issues?state=open";
-
-
-            $(document).ready(function () {
-                $.getJSON(urlToGetAllOpenBugs, function (allIssues) {
-                    $("div#github-issues").append("There are currently <b>" + allIssues.length + "</b> open issues:</br>");
-                    $.each(allIssues, function (i, issue) {
-
-
-                        // Get assignee (if applicable)
-                        var assigneeName = "Unassigned";
-                        if (issue.assignee) {
-                            assigneeName = issue.assignee.login;
-                        }
-
-
-                        // Calculate number of days ago created
-                        var today = new Date();
-                        var timeDifference = today - Date.parse(issue.created_at);
-                        var daysAgo = (timeDifference / (1000 * 3600 * 24)).toFixed();
-
-
-                        $("div#github-issues")
-                                .append("<div style=\"margin-bottom:20px;\">")
-                                .append("<strong><a href=\"" + issue.html_url + "\">" + issue.title + "</a></strong></br>")
-                                .append("#" + issue.number + " opened " + daysAgo + " days ago by " + issue.user.login + "</br>")
-                                .append("Assigned to: " + assigneeName)
-                                .append("</div>");
-                    });
-                });
-            });
-        </script>
-    </body>
-</html>
+                                        <!-- jQuery -->
+                                        <script src="plugins/jquery/jquery.min.js"></script>
+                                        <!-- Bootstrap 4 -->
+                                        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+                                        <!-- AdminLTE App -->
+                                        <script src="dist/js/adminlte.min.js"></script>
+                                        </body>
+                                        </html>
