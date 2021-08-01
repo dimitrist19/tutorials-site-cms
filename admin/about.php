@@ -52,10 +52,10 @@ require 'templates/header.tpl.php'
                                             <br>User Interface Template: <b>Maor Dayan</b>
                                             <br>
                                             <br>
-                                            <p><b>The copyright notices must be included with all pages of the script.</b> If you wish to remove them please open a support ticket on my <a href="https://discord.gg/wwJbMup">discord server</a> 
+                                            <p><b>The copyright notices must be included with all pages of the script.</b> If you wish to request to remove them please contact me: <a href="support.php">Contact Options</a> 
                                             <div class="dropdown-divider"></div>
                                             <h3>About the script</h3>
-                                            <p>Version: <code><?= $version?> (June 2021 Update)</code></p>
+                                            <p>Version: <code><?= $version?> (August 2021 Update)</code> <a href="https://service.dtprojects.eu.org/updatechecker.php?v=<?= $version?>" target="_blank">Check for updates</a></p>
                                             <p>Through 'Tutorials Site' CMS you can easily create a video tutorial site for your hosting business</p>
                                             <font size='small' color='grey'>*The script includes tools especially for web hosting video tutorial site but it may be used from non web hosting providers/sites.</font>
                                             <br>
