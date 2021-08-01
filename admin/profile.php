@@ -17,8 +17,6 @@ if (count($_POST) > 0) {
     $updateprofile = mysqli_query($conn, "UPDATE users SET fullname='" . $_POST['name'] . "' WHERE id={$_SESSION['id']}");
     $message1 = '<p class="alert alert-success">Profile Updated!</p>';
 }
-$result = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
-$row = mysqli_fetch_array($result);
 ?>
 <?php
 $page = 'user';

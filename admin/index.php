@@ -15,8 +15,6 @@ include '../config.php';
 $query = "SELECT COUNT(*) FROM tutorials";
 $resulttut = mysqli_query($conn,$query);
 $rows = mysqli_fetch_row($resulttut);
-$result = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
-$row = mysqli_fetch_array($result);
 ?>
 <?php
 $page = 'home';

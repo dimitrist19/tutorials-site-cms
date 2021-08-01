@@ -9,8 +9,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 require '../config.php';
-$result1 = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
-$row1 = mysqli_fetch_array($result1);
 ?>
 <?php
 $page = 'support';

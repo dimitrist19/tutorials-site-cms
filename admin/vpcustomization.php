@@ -11,8 +11,6 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 include '../config.php';
-$result = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
-$row = mysqli_fetch_array($result);
 ?>
 <?php
 $page = 'vpcustomization';
