@@ -40,128 +40,135 @@ $page = '';
 require_once 'templates/header.tpl.php';
 ?>
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1 class="m-0 text-dark">Change Password</h1>
-                            </div><!-- /.col -->
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                                    <li class="breadcrumb-item active">Profile</li>
-                                </ol>
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content-header -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Change Password</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item active">Profile</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
-                <!-- Main content -->
-                <div class="content">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="card">
-                                    <div class='card-body'>
-                                        <form name="frmChange" method="post" action="" onSubmit="return validatePassword()">
-                                            <div style="width:500px;">
-                                                <div class="message">
-                                                    <?php
-                                                    if (isset($message)) {
-                                                        echo $message;
-                                                    }
-                                                    ?>
-                                                </div>
-                                                <table border="0" cellpadding="10" cellspacing="0" width="500" align="center">
-                                                    <tr>
-                                                        <td width="40%"><label>Current Password</label></td>
-                                                        <td width="60%"><input type="password" name="currentPassword" class="form-control"/><span id="currentPassword"  class="required"></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><label>New Password</label></td>
-                                                        <td><input type="password" name="newPassword" class="form-control"/><span id="newPassword" class="required"></span></td>
-                                                    </tr>
-                                                    <td><label>Confirm Password</label></td>
-                                                    <td><input type="password" name="confirmPassword" class="form-control"/><span id="confirmPassword" class="required"></span></td>
-                                                    <div class="g-recaptcha" data-sitekey="<?= $sitekey ?>" id="verify"></div>
-                                                    </tr>
-                                                    <tr>
-                                                    <tr>
-                                                        <td colspan="2"><input type="submit" name="submit" value="Submit" class="btn btn-primary"></td>
-                                                    </tr>
-
-                                            </div>
-                                        </form>
-                                        <td colspan="2"><button class="btn btn-danger" onclick="goBack()">Cancel</button></td>
-                                        </table>
+    <!-- Main content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class='card-body'>
+                            <form class="form-horizontal" name="frmChange" method="post" action="" onSubmit="return validatePassword()">
+                                <div class="form-group row">
+                                        <?php
+                                        if (isset($message)) {
+                                            echo $message;
+                                        }
+                                        ?>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="currentPassword" class="col-sm-2 col-form-label">Current Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="currentPassword" placeholder="Current Password"><span id="currentPassword"  class="required"></span>
                                     </div>
                                 </div>
-                                <script>
-                                    function validatePassword() {
-                                        var currentPassword, newPassword, confirmPassword, output = true;
-
-                                        currentPassword = document.frmChange.currentPassword;
-                                        newPassword = document.frmChange.newPassword;
-                                        confirmPassword = document.frmChange.confirmPassword;
-
-                                        if (!currentPassword.value) {
-                                            currentPassword.focus();
-                                            document.getElementById("currentPassword").innerHTML = "required";
-                                            output = false;
-                                        } else if (!newPassword.value) {
-                                            newPassword.focus();
-                                            document.getElementById("newPassword").innerHTML = "required";
-                                            output = false;
-                                        } else if (!confirmPassword.value) {
-                                            confirmPassword.focus();
-                                            document.getElementById("confirmPassword").innerHTML = "required";
-                                            output = false;
-                                        }
-                                        if (newPassword.value != confirmPassword.value) {
-                                            newPassword.value = "";
-                                            confirmPassword.value = "";
-                                            newPassword.focus();
-                                            document.getElementById("confirmPassword").innerHTML = "New Password must not be the same as your old one!";
-                                            output = false;
-                                        }
-                                        return output;
-                                    }
-                                </script>
-                            </div>
+                                <div class="form-group row">
+                                    <label for="newPassword" class="col-sm-2 col-form-label">New Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="newPassword" placeholder="New Password"><span id="newPassword" class="required"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="confirmPassword" class="col-sm-2 col-form-label">Confirm Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password"><span id="confirmPassword" class="required"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="g-recaptcha" data-sitekey="<?= $sitekey ?>" id="verify"></div>
+                                </div>
+                                <!-- /.card-body -->
+                                <!-- /.card-footer -->
                         </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-default float-right" onclick="goBack()">Cancel</button>
+                        </div>
+                        </form>
+                        <script>
+                            function validatePassword() {
+                                var currentPassword, newPassword, confirmPassword, output = true;
 
-                        <!-- /.row -->
-                    </div><!-- /.container-fluid -->
+                                currentPassword = document.frmChange.currentPassword;
+                                newPassword = document.frmChange.newPassword;
+                                confirmPassword = document.frmChange.confirmPassword;
+
+                                if (!currentPassword.value) {
+                                    currentPassword.focus();
+                                    document.getElementById("currentPassword").innerHTML = "<font color='red'>Required</font>";
+                                    output = false;
+                                }
+
+                                if (!newPassword.value) {
+                                    newPassword.focus();
+                                    document.getElementById("newPassword").innerHTML = "<font color='red'>Required</font>";
+                                    output = false;
+                                }
+                                if (!confirmPassword.value) {
+                                    confirmPassword.focus();
+                                    document.getElementById("confirmPassword").innerHTML = "<font color='red'>Required</font>";
+                                    output = false;
+                                }
+                                if (newPassword.value != confirmPassword.value) {
+                                    newPassword.value = "";
+                                    confirmPassword.value = "";
+                                    newPassword.focus();
+                                    document.getElementById("confirmPassword").innerHTML = "<font color='red'>Confirm Password does not match with New Password</font>";
+                                    output = false;
+                                }
+                                return output;
+                            }
+                        </script>
+                    </div>
                 </div>
-                <!-- /.content -->
-            </div>
+
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /.content -->
+    </div>
+</div>
+<!-- /.content-wrapper -->
 
-        <?php
-        require_once 'templates/footer.tpl.php';
-        ?>
-        <!-- ./wrapper -->
+<?php
+require_once 'templates/footer.tpl.php';
+?>
+<!-- ./wrapper -->
 
-        <!-- REQUIRED SCRIPTS -->
+<!-- REQUIRED SCRIPTS -->
 
-        <!-- jQuery -->
-        <script src="plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/adminlte.min.js"></script>
-        <script src='https://www.google.com/recaptcha/api.js'></script>
-        <!-- Recaptcha -->
-        <script>
-                                    function goBack() {
-                                        window.history.back();
-                                    }
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<!-- Recaptcha -->
+<script>
+                            function goBack() {
+                                window.history.back();
+                            }
 
-        </script>
-    </body>
+</script>
+</body>
 </html>
