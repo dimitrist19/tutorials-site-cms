@@ -48,9 +48,8 @@ function section_active($section_title) {
             echo 'open';
         } else if ($page_name == 'backup') {
             echo 'open';
-        } else {
-            echo 'closed';
-        }
+        } 
+        return;
     } else if ($section_title == 'tutorials') {
         if ($page_name == 'tutorials') {
             echo 'open';
@@ -58,18 +57,17 @@ function section_active($section_title) {
             echo 'open';
         } else if ($page_name == 'delete') {
             echo 'open';
-        } else {
-            echo 'closed';
         }
+        return;
     } else if ($section_title == 'help') {
         if ($page_name == 'support') {
             echo 'open';
         } else if ($page_name == 'getting_started_guide') {
             echo 'open';
-        } else {
-            echo 'closed';
         }
+        return;
     }
+    echo 'closed';
 }
 
 $getUserDetails = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
@@ -86,7 +84,7 @@ $UserDetails = mysqli_fetch_array($getUserDetails);
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/adminlte.min.css">
         <!-- Google Font: Source Sans Pro -->
@@ -170,7 +168,7 @@ $UserDetails = mysqli_fetch_array($getUserDetails);
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="config.php" class="nav-link <?= page_active('configuration') ?>">
+                                        <a href="configuration.php" class="nav-link <?= page_active('configuration') ?>">
                                             <i class="fa fa-tools nav-icon"></i>
                                             <p>Configuration</p>
                                         </a>
