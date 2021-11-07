@@ -39,6 +39,4 @@ readfile($filename);
 
 // deleting file
 unlink($filename);
-
-header('Location: ../backup.php');
 ?>
