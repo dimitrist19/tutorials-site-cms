@@ -27,7 +27,7 @@ if (isset($_GET['install'])) {
             
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
-            $version = 1.2;
+            $version = 1.3;
 
 ?>';
     fwrite($conffile, $data);
@@ -71,7 +71,7 @@ if (isset($_GET['install'])) {
             
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
-            $version = 1.2;
+            $version = 1.3;
 
 ?>';
         fwrite($conffile, $data);
@@ -141,11 +141,11 @@ if (isset($_GET['install'])) {
                                         <div class="card-body">
                                             <?php
                                             if (file_exists('config.php')) {
-                                                if ($version_numerical > 1.2 || $version_numerical == 1.2) {
+                                                if ($version_numerical > 1.3 || $version_numerical == 1.3) {
                                                     echo 'A newer version is already installed';
                                                 } else {
                                                     ?>
-                                                    <p>This will update your installation from <?= $version ?> to V1.2 (It will not delete any data but you are advised to backup your database before update)</p>
+                                                    <p>This will update your installation from <?= $version ?> to V1.3 (It will not delete any data but you are advised to backup your database before update)</p>
                                                     <a href="?update">Update Installation</a>
                                                     <?php
                                                 }
