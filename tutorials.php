@@ -32,10 +32,10 @@ if (intval($settings['maintenance']) == 1) {
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preload" as="style" href="assets/css/mbr-additional.css"><link rel="stylesheet" href="assets/css/mbr-additional.css" type="text/css">
-	        <style>
-            <?= $settings['css_code']?>
-        </style>    
-</head>
+        <style>
+<?= $settings['css_code'] ?>
+        </style>
+    </head>
     <body>
         <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0" style="margin-bottom: 20px;">
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
