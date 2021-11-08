@@ -48,7 +48,7 @@ function section_active($section_title) {
             echo 'open';
         } else if ($page_name == 'backup') {
             echo 'open';
-        } 
+        }
         return;
     } else if ($section_title == 'tutorials') {
         if ($page_name == 'tutorials') {
@@ -72,6 +72,8 @@ function section_active($section_title) {
 
 $getUserDetails = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
 $UserDetails = mysqli_fetch_array($getUserDetails);
+$getSettings = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
+$settings = mysqli_fetch_array($getSettings);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -152,7 +154,11 @@ $UserDetails = mysqli_fetch_array($getUserDetails);
                             <a href="profile.php" class="d-block"><?= $UserDetails['fullname'] ?></a>
                         </div>
                     </div>
-
+                    <?php
+                    if (intval($settings['maintenance']) == 1) {
+                        echo '<p class="alert alert-info">Maintenance Mode Active!</p>';
+                    }
+                    ?>
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
