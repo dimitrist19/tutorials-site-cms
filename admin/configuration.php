@@ -139,6 +139,7 @@ require_once 'templates/header.tpl.php';
                                             <label for="maintenancemode">Maintenance Mode:</label>
                                             <input type="checkbox" name="maintenancemode" <?= checkMaintenance('check') ?>>Enable Maintenance Mode</input>
                                         </div>
+                                        <p>* If you are logged in and maintenance mode is active you will be able to see the site normally</p>
                                     </div>
                                 </div>
                             </div>
