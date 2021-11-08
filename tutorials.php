@@ -4,7 +4,13 @@ require 'config.php';
 $getSettings = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
 $getTutorials = mysqli_query($conn, "SELECT * FROM tutorials");
 
+session_start();
 $settings = mysqli_fetch_array($getSettings);
+if (intval($settings['maintenance']) == 1) {
+    if (!isset($_SESSION['loggedin'])) {
+        die(include 'maintenance.php');
+    }
+}
 ?>
 <html>
     <head>
@@ -26,7 +32,10 @@ $settings = mysqli_fetch_array($getSettings);
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preload" as="style" href="assets/css/mbr-additional.css"><link rel="stylesheet" href="assets/css/mbr-additional.css" type="text/css">
-    </head>
+	        <style>
+            <?= $settings['css_code']?>
+        </style>    
+</head>
     <body>
         <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0" style="margin-bottom: 20px;">
             <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
