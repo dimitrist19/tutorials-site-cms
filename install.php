@@ -149,6 +149,7 @@ if (isset($_GET['install'])) {
                                                     ?>
                                                     <p>This will update your installation from <?= $version ?> to V1.3 (It will not delete any data but you are advised to backup your database before update)</p>
                                                     <a href="?update">Update Installation</a>
+                                                    <p class="login-box-msg"><b>Warning! The updater may not work correctly as it's still in the testing phase. If you wish to safely update the CMS delete 'install.php' file and visit <a href="https://service.dtprojects.eu.org/support/knowledgebase.php?article=1">this page</a></b></p>
                                                     <?php
                                                 }
                                             } else {
