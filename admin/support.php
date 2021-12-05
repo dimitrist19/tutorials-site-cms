@@ -77,6 +77,14 @@ require_once 'templates/header.tpl.php';
                                                 <div id="collapseOne" class="panel-collapse collapse in">
                                                     <div class="card-body">
                                                         <h5><b>Change Log</b></h5>
+                                                        <p>V1.3</p>
+                                                        <ul>
+                                                            <li>Improved UI and content change in some pages</li>
+                                                            <li>Bug Fixes</li>
+                                                            <li>Code Optimization</li>
+                                                            <li>Maintenance Mode</li>
+                                                            <li>Custom CSS</li>
+                                                        </ul>
                                                         <p>V1.2</p>
                                                         <ul>
                                                             <li>Improved UI in some pages</li>
