@@ -63,7 +63,7 @@ require 'templates/header.tpl.php'
                                             <code>
                                                 MIT License
 
-                                                <br><br>Copyright (c) 2021 Dimitris T.(https://github.com/dimitrist19)
+                                                <br><br>Copyright (c) 2022 Dimitris T.(https://github.com/dimitrist19)
 
                                                 <br><br>Permission is hereby granted, free of charge, to any person obtaining a copy
                                                 of this software and associated documentation files (the "Software"), to deal

@@ -110,7 +110,7 @@ mysqli_close($conn);
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2021 <b><a href="<?= $settings['homeurl'] ?>"><?= $settings['hostname'] ?></a></b> - Tutorials Site CMS by <b><a href="https://github.com/dimitrist19">Dimitris T.</a></b>
+                                © Copyright 2022 <b><a href="<?= $settings['homeurl'] ?>"><?= $settings['hostname'] ?></a></b> - Tutorials Site CMS by <b><a href="https://github.com/dimitrist19">Dimitris T.</a></b>
                             </p>
                         </div>
                         <div class="col-md-6">
