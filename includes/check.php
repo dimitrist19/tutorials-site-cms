@@ -1,15 +1,11 @@
 <?php
-    if (file_exists('install.php')) {
-        header('Location: install.php');
-    }
-    else if (file_exists('../install.php')) {
-        header('Location: ../install.php');
-    }
-    else if (file_exists('config.php')) {
-    }
-    else if (file_exists('../config.php')) {
-    }
-    else {
-        die('Configuration File Does Not Exist');
-    }
+
+if (file_exists(__DIR__ . '/../install.php')) {
+    header('Location: install.php');
+    die;
+}
+
+if (!file_exists('config.php') && !file_exists(__DIR__ . '/../config.php')) {
+    die('Missing configuration file. Please reinstall.');
+}
 ?>
