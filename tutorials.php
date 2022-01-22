@@ -83,7 +83,8 @@ if (intval($settings['maintenance']) == 1) {
 </section>';
             }
         } else if (isset($_GET['id'])) {
-            $getTutorialById = mysqli_query($conn, "SELECT * FROM tutorials WHERE id = {$_GET['id']}");
+            $getTutorialQuery = sprintf("SELECT CountryCode FROM City WHERE name='%s'",mysqli_real_escape_string($conn, $_GET['id']));
+            $getTutorialById = mysqli_query($conn, $getTutorialQuery);
             $singleTutorial = mysqli_fetch_array($getTutorialById);
             if (is_null($singleTutorial['id'])) {
                 echo '<section class="header7 cid-rEMpe1dCB9">
