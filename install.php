@@ -17,11 +17,6 @@ if (isset($_GET['install'])) {
             $dbpass = "' . $_POST['dbpass'] . '";
             $dbname = "' . $_POST['dbname'] . '";
             
-            //SECURITY
-            //Recaptcha Settings (Recaptcha integration is still in beta phase and currently works only at the password change page)
-            $sitekey = "' . $_POST['sitekey'] . '"; //ENTER YOUR RECAPTCHA SITE KEY
-            $secretkey = "' . $_POST['secretkey'] . '"; //ENTER YOUR RECAPTCHA SECRET KEY
-            
             //DEBUGGING
             error_reporting(0); //Set to -1 if you want to see php errors
             
@@ -60,11 +55,6 @@ if (isset($_GET['install'])) {
             $dbuser = "' . $dbuser . '";
             $dbpass = "' . $dbpass . '";
             $dbname = "' . $dbname . '";
-            
-            //SECURITY
-            //Recaptcha Settings (Recaptcha integration is still in beta phase and currently works only at the password change page)
-            $sitekey = "' . $sitekey . '"; //ENTER YOUR RECAPTCHA SITE KEY
-            $secretkey = "' . $secretkey . '"; //ENTER YOUR RECAPTCHA SECRET KEY
             
             //DEBUGGING
             error_reporting(0); //Set to -1 if you want to see php errors
@@ -200,24 +190,6 @@ if (isset($_GET['install'])) {
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
                                                         <span class="fas fa-database"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <h3>Recaptcha keys</h3>
-                                            <h6>Obtain them <a target="_blank" href="https://google.com/recaptcha">here</a></h6>
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="Site Key" name="sitekey" required>
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text">
-                                                        <span class="fas fa-key"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="input-group mb-3">
-                                                <input type="text" class="form-control" placeholder="Secret Key" name="secretkey" required>
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text">
-                                                        <span class="fas fa-user-secret"></span>
                                                     </div>
                                                 </div>
                                             </div>

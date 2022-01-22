@@ -16,22 +16,16 @@ if (!isset($_SESSION['loggedin'])) {
 include '../config.php';
 $row = mysqli_fetch_array($result);
 if (count($_POST) > 0) {
-    $captcha = $_POST['g-recaptcha-response'];
-    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secretkey . "&response=" . $captcha);
-    $responseKeys = json_decode($response, true);
-    if (intval($responseKeys["success"]) !== 1) {
-        $message = '<p class="alert alert-danger">Please check the the captcha form.</p>';
-    } else {
-        if (password_verify($_POST["currentPassword"], $row['password'])) {
-            if ($_POST['currentPassword'] == $_POST['newPassword']) {
-                $message = '<p class="alert alert-warning">New Password cannot be the same as your Old Password!</p>';
-            } else {
-                mysqli_query($conn, "UPDATE users SET password='" . password_hash($_POST["newPassword"], PASSWORD_DEFAULT) . "' WHERE id= {$_SESSION['id']}");
-                $message = '<p class="alert alert-success">Password Changed</p>';
-            }
+
+    if (password_verify($_POST["currentPassword"], $row['password'])) {
+        if ($_POST['currentPassword'] == $_POST['newPassword']) {
+            $message = '<p class="alert alert-warning">New Password cannot be the same as your Old Password!</p>';
         } else {
-            $message = '<p class="alert alert-warning">Current Password is not correct</p>';
+            mysqli_query($conn, "UPDATE users SET password='" . password_hash($_POST["newPassword"], PASSWORD_DEFAULT) . "' WHERE id= {$_SESSION['id']}");
+            $message = '<p class="alert alert-success">Password Changed</p>';
         }
+    } else {
+        $message = '<p class="alert alert-warning">Current Password is not correct</p>';
     }
 }
 ?>
@@ -69,11 +63,11 @@ require_once 'templates/header.tpl.php';
                         <div class='card-body'>
                             <form class="form-horizontal" name="frmChange" method="post" action="" onSubmit="return validatePassword()">
                                 <div class="form-group row">
-                                        <?php
-                                        if (isset($message)) {
-                                            echo $message;
-                                        }
-                                        ?>
+                                    <?php
+                                    if (isset($message)) {
+                                        echo $message;
+                                    }
+                                    ?>
                                 </div>
                                 <div class="form-group row">
                                     <label for="currentPassword" class="col-sm-2 col-form-label">Current Password</label>
@@ -92,9 +86,6 @@ require_once 'templates/header.tpl.php';
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password"><span id="confirmPassword" class="required"></span>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="g-recaptcha" data-sitekey="<?= $sitekey ?>" id="verify"></div>
                                 </div>
                                 <!-- /.card-body -->
                                 <!-- /.card-footer -->
