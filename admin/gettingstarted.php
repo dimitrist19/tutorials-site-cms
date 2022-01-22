@@ -46,7 +46,7 @@ require_once 'templates/header.tpl.php';
                                 <div class="card">
                                     <h5 class="card-header">Welcome! This is a short guide on how to get started with 'Tutorials Site CMS V<?= $version?>':</h5>
                                     <div class="card-body">
-                                        <p>1) For security reasons change the admin's password <a href="profile.php">here</a> (the password changer won't work if you don't obtain recaptcha keys)</p>
+                                        <p>1) For security reasons change the admin's password <a href="profile.php">here</a></p>
                                         <p>2) Then go to <a href="config.php">Configuration</a> and replace name, logo, favicon etc. with your preferred one's.</p>
                                         <p>3) You can add tutorials at the the <a href="tutorials.php">Tutorials Section</a></p>
                                         <p><b>You're ready to go! You may start linking your tutorials url with your site so clients can watch your video tutorials!</b></p>
