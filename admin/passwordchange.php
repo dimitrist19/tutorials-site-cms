@@ -22,7 +22,7 @@ if (count($_POST) > 0) {
     if (intval($responseKeys["success"]) !== 1) {
         $message = '<p class="alert alert-danger">Please check the the captcha form.</p>';
     } else {
-        if (password_verify($_POST["currentPassword"], $row['password']) == $row["password"]) {
+        if (password_verify($_POST["currentPassword"], $row['password'])) {
             if ($_POST['currentPassword'] == $_POST['newPassword']) {
                 $message = '<p class="alert alert-warning">New Password cannot be the same as your Old Password!</p>';
             } else {
