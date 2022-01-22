@@ -102,7 +102,6 @@ if (intval($settings['maintenance']) == 1) {
     </div>
 </section>';
             } else {
-                $tutorial['id'] = $_GET['id'];
                 echo '<section class="header7 cid-rEMpe1dCB9">
     <div class="container">
         <div class="media-container-row">
