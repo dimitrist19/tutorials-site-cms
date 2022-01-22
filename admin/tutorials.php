@@ -1,8 +1,4 @@
 <?php
-include '../config.php';
-$result = mysqli_query($conn, "SELECT * FROM tutorials");
-?>
-<?php
 // We need to use sessions, so you should always start sessions using the below code.
 
 session_start();
@@ -15,6 +11,10 @@ if (!isset($_SESSION['loggedin'])) {
 
     exit();
 }
+?>
+<?php
+include '../config.php';
+$result = mysqli_query($conn, "SELECT * FROM tutorials");
 ?>
 <?php
     $page = 'tutorials';
