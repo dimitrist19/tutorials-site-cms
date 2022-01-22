@@ -119,13 +119,7 @@ if (intval($settings['maintenance']) == 1) {
 </section>';
                 ?>
                 <?php
-                if (!isset($singleTutorial['body'])) {
-                    
-                } else if (is_null($singleTutorial['body'])) {
-                    
-                } else if (empty($singleTutorial['body'])) {
-                    
-                } else {
+                if (isset($singleTutorial['body']) && !empty(@$singleTutorial['body'])) {
                     echo '<div style="padding: 75px;">' . $singleTutorial['body'] . '</div>';
                 }
             }
