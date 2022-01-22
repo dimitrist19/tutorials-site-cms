@@ -77,30 +77,7 @@ require_once 'templates/header.tpl.php';
                                                 <div id="collapseOne" class="panel-collapse collapse in">
                                                     <div class="card-body">
                                                         <h5><b>Change Log</b></h5>
-                                                        <p>V1.3</p>
-                                                        <ul>
-                                                            <li>Improved UI and content change in some pages</li>
-                                                            <li>Bug Fixes</li>
-                                                            <li>Code Optimization</li>
-                                                            <li>Maintenance Mode</li>
-                                                            <li>Custom CSS</li>
-                                                        </ul>
-                                                        <p>V1.2</p>
-                                                        <ul>
-                                                            <li>Improved UI in some pages</li>
-                                                            <li>Bug Fixes</li>
-                                                            <li>Code Optimization</li>
-                                                            <li>Backup & Export tool (in beta phase)</li>
-                                                            <li>Installer / Updater (in beta phase)</li>
-                                                        </ul>
-                                                        <p>V1.1</p>
-                                                        <ul>
-                                                            <li>Improved UI in some pages</li>
-                                                            <li>Bug Fixes</li>
-                                                            <li>Improved Editor Integration</li>
-                                                            <li>Added 'VP CUSTOMIZATION' section</li>
-                                                            <li>Datatable for Tutorial List with 'View' action</li>
-                                                        </ul>
+                                                        <p>To view changelog navigate to <a href="https://dtprojects.eu.org/tutorials-site-cms/changelog.php">https://dtprojects.eu.org/tutorials-site-cms/changelog.php</a></p>
                                                     </div>
                                                 </div>
                                             </div>

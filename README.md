@@ -40,4 +40,4 @@ You may place a feature request in issues section.
 For issue and bug reports open a github issue. For other support visit the helpdesk: https://service.dtprojects.eu.org/support/
 
 <h2>Changelog</h2>
-For changelog you can visit https://dtprojects.eu.org/tutorials-site-cms/changelog
+For changelog you can visit https://dtprojects.eu.org/tutorials-site-cms/changelog.php
