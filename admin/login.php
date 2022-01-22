@@ -1,8 +1,8 @@
 <?php
 include '../config.php';
 
-if (isset ($_GET['logout'])) {
-        if ($_GET['logout'] == 'true') {
+if (isset ($_GET['loggedout'])) {
+        if ($_GET['loggedout'] == 'true') {
             $message = '<p class="alert alert-success">You have been successfully logged out</p>';
         }
 }

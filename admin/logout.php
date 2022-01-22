@@ -2,5 +2,5 @@
 session_start();
 session_destroy();
 // Redirect to the login page:
-header('Location: login.php?logout=true');
+header('Location: login.php?loggedout=true');
 ?>
