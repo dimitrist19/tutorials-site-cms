@@ -23,13 +23,11 @@ $ext         = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 // Check if file already exists
 if (file_exists($target_file)) {
-    echo "Sorry, file already exists.";
     $uploadOk = 0;
 }
 
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 10485760) {
-    echo "Sorry, maximum upload filesize is 10mb.";
     $uploadOk = 0;
 }
 
@@ -41,7 +39,6 @@ if ($ext == 'json') {
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
     header('Location: ../backup.php?error');
 // if everything is ok, try to upload file
 } else {
