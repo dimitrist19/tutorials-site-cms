@@ -51,7 +51,7 @@ require_once 'templates/header.tpl.php';
                                 </tr>
                                 <tr>
                                     <td class="col-sm-2"><strong><i class="fas fa-headset"></i> Direct Support</strong></td>
-                                    <td class="col-sm-10">Need direct support? You can create a support ticket and i'll try to get back to you within  48 hours. <a href="https://service.dtprojects.eu.org/support/index.php?a=add&catid=4&custom1=Tutorials Site CMS&custom2=v<?= $version ?>" class="btn btn-small btn-gradient btn-secondary" target="_blank"><i class="fas fa-ticket-alt"></i> Create support ticket</a>&nbsp;<a href="https://service.dtprojects.eu.org/support/ticket.php" class="btn btn-small btn-gradient btn-secondary" target="_blank"> <i class="fas fa-file-alt"></i> View existing ticket</a></td>
+                                    <td class="col-sm-10">Need direct support? You can create a support ticket and i'll try to get back to you within  48 hours. <a href="https://service.dtprojects.eu.org/support/index.php?a=add&catid=4&custom1=Tutorials Site CMS&custom2=v<?=$version?>" class="btn btn-small btn-gradient btn-secondary" target="_blank"><i class="fas fa-ticket-alt"></i> Create support ticket</a>&nbsp;<a href="https://service.dtprojects.eu.org/support/ticket.php" class="btn btn-small btn-gradient btn-secondary" target="_blank"> <i class="fas fa-file-alt"></i> View existing ticket</a></td>
                                 </tr>
                                 <tr>
                                     <td class="col-sm-2"><strong><i class="fas fa-life-ring"></i> Other</strong></td>
@@ -108,8 +108,8 @@ require_once 'templates/header.tpl.php';
                                         <!-- /.content-wrapper -->
 
                                         <?php
-                                        require_once 'templates/footer.tpl.php';
-                                        ?>
+require_once 'templates/footer.tpl.php';
+?>
                                         <!-- ./wrapper -->
 
                                         <!-- REQUIRED SCRIPTS -->

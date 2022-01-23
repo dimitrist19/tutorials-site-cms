@@ -22,9 +22,10 @@ if (count($_POST) > 0) {
 }
 
 $result = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
-$row = mysqli_fetch_array($result);
+$row    = mysqli_fetch_array($result);
 
-function checkMaintenance($inp) {
+function checkMaintenance($inp)
+{
     global $row;
     if ($inp == 'post') {
         if (count($_POST) > 0) {
@@ -88,12 +89,12 @@ require_once 'templates/header.tpl.php';
                             </div>
                             <div class="card-body">
                                 <?php
-                                if (isset($message)) {
-                                    echo '<div class="alert alert-success alert-dismissible">
+if (isset($message)) {
+    echo '<div class="alert alert-success alert-dismissible">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                   <h5><i class="icon fas fa-check"></i>' . $message . '</h5></div>';
-                                }
-                                ?>
+}
+?>
                                 <div class="tab-content" id="custom-tabs-three-tabContent">
                                     <div class="tab-pane fade show active" id="configuration-general" role="tabpanel" aria-labelledby="configuration-design-tab">
                                         <p>Fiels marked with <b>*</b> are required.</p>
@@ -125,19 +126,19 @@ require_once 'templates/header.tpl.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="homeurl">* Homepage Url</label>
-                                            <input type="url" class="form-control" value='<?php echo $row['homeurl']; ?>' name="home" placeholder="Homepage Url" required> 
+                                            <input type="url" class="form-control" value='<?php echo $row['homeurl']; ?>' name="home" placeholder="Homepage Url" required>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="configuration-design" role="tabpanel" aria-labelledby="configuration-design-tab">
                                         <div class="form-group">
                                             <label for="customcss">Custom CSS</label>
-                                            <textarea name="customcss" placeholder="Enter custom CSS here" class="form-control"><?= $row['css_code'] ?></textarea>
+                                            <textarea name="customcss" placeholder="Enter custom CSS here" class="form-control"><?=$row['css_code']?></textarea>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="configuration-maintenance" role="tabpanel" aria-labelledby="configuration-maintenance-tab">
                                         <div class="form-group">
                                             <label for="maintenancemode">Maintenance Mode:</label>
-                                            <input type="checkbox" name="maintenancemode" <?= checkMaintenance('check') ?>>Enable Maintenance Mode</input>
+                                            <input type="checkbox" name="maintenancemode" <?=checkMaintenance('check')?>>Enable Maintenance Mode</input>
                                         </div>
                                         <p>* If you are logged in and maintenance mode is active you will be able to see the site normally</p>
                                     </div>

@@ -3,7 +3,6 @@ require '../config.php';
 
 session_start();
 
-
 if (!isset($_SESSION['loggedin'])) {
 
     header('Location: login.php');
@@ -55,12 +54,12 @@ require_once 'templates/header.tpl.php';
                                     <form role="form" method='post'>
                                         <div class="card-body">
                                             <?php
-                                            if (isset($message)) {
-                                                echo '<div class="alert alert-success alert-dismissible">
+if (isset($message)) {
+    echo '<div class="alert alert-success alert-dismissible">
                   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                   <h5><i class="icon fas fa-check"></i>' . $message . '</h5>You can manage your tutorials <a href="tutorials.php">here</a></div>';
-                                            }
-                                            ?>
+}
+?>
                                             <p>Fiels marked with <b>*</b> are required. The fields that are not required, leave them blank and they won't appear in the website.</p>
                                             <div class="form-group">
                                                 <label for="title">* Tutorial Title</label>
@@ -99,8 +98,8 @@ require_once 'templates/header.tpl.php';
             <!-- /.content-wrapper -->
 
             <?php
-                require_once 'templates/footer.tpl.php';
-            ?>
+require_once 'templates/footer.tpl.php';
+?>
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->

@@ -22,7 +22,7 @@ if (!isset($_GET['id'])) {
 }
 session_start();
 $result = mysqli_query($conn, "SELECT * FROM tutorials WHERE id = {$_GET['id']}");
-$row = mysqli_fetch_array($result);
+$row    = mysqli_fetch_array($result);
 
 mysqli_close($conn);
 ?>
@@ -69,28 +69,28 @@ require_once 'templates/header.tpl.php';
             <div class="row">
                 <div class="col-lg-12">
                     <?php
-                    if (count($_POST) > 0) {
-                        if ($conn->query($sql) === TRUE) {
-                            echo '<h1 class="alert alert-success">Success!</h1>';
-                        } else {
-                            echo "Error deleting record: " . $conn->error;
-                        }
-                    } else {
-                        ?>
+if (count($_POST) > 0) {
+    if ($conn->query($sql) === true) {
+        echo '<h1 class="alert alert-success">Success!</h1>';
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+} else {
+    ?>
                         <form method="post" class="card">
                             <div class="card-body">
-                                <input value="<?= $_GET['id'] ?>" name="id" hidden>
+                                <input value="<?=$_GET['id']?>" name="id" hidden>
                                 <div class="alert alert-danger">
                                     <h5>Are you sure you want to delete this Tutorial?</h5>
                                 </div>
-                                <p><b>Tutorial Title:</b><?= $row['title'] ?><p>
+                                <p><b>Tutorial Title:</b><?=$row['title']?><p>
                                     <input type="checkbox" required> Are you sure?</input></p>
                                 <p><input type="submit" value="Delete" class="btn btn-danger"></p>
                             </div>
                         </form>
                         <?php
-                    }
-                    ?>
+}
+?>
                 </div>
             </div>
 

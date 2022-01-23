@@ -15,7 +15,7 @@ include '../config.php';
 
 if (count($_POST) > 0) {
     $updateprofile = mysqli_query($conn, "UPDATE users SET fullname='" . $_POST['name'] . "' WHERE id={$_SESSION['id']}");
-    $message1 = '<p class="alert alert-success">Profile Updated!</p>';
+    $message1      = '<p class="alert alert-success">Profile Updated!</p>';
 }
 ?>
 <?php
@@ -63,9 +63,9 @@ require_once 'templates/header.tpl.php';
                                                                  alt="User profile picture">
                                                         </div>
 
-                                                        <h3 class="profile-username text-center"><?= $UserDetails['fullname'] ?></h3>
+                                                        <h3 class="profile-username text-center"><?=$UserDetails['fullname']?></h3>
 
-                                                        <p class="text-muted text-center"><?= $UserDetails['username'] ?></p>
+                                                        <p class="text-muted text-center"><?=$UserDetails['username']?></p>
 
                                                         <a href="passwordchange.php" class="btn btn-primary btn-block"><b>Change Password</b></a>
                                                     </div>
@@ -86,20 +86,20 @@ require_once 'templates/header.tpl.php';
                                                             <div class="active tab-pane" id="details">
                                                                 <form class="form-horizontal" method="post">
                                                                     <?php
-                                                                    if (isset($message1)) {
-                                                                        echo $message1;
-                                                                    }
-                                                                    ?>
+if (isset($message1)) {
+    echo $message1;
+}
+?>
                                                                     <div class="form-group row">
                                                                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                                                         <div class="col-sm-10">
-                                                                            <input name="name" type="text" value="<?= $UserDetails['fullname'] ?>" class="form-control" id="inputName" placeholder="Name">
+                                                                            <input name="name" type="text" value="<?=$UserDetails['fullname']?>" class="form-control" id="inputName" placeholder="Name">
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label for="inputName" class="col-sm-2 col-form-label">Username</label>
                                                                         <div class="col-sm-10">
-                                                                            <?= $UserDetails['username'] ?>
+                                                                            <?=$UserDetails['username']?>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -133,8 +133,8 @@ require_once 'templates/header.tpl.php';
             <!-- /.content-wrapper -->
 
             <?php
-            require_once 'templates/footer.tpl.php';
-            ?>
+require_once 'templates/footer.tpl.php';
+?>
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->

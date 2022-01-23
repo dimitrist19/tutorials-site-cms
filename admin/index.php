@@ -12,9 +12,9 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 include '../config.php';
-$query = "SELECT COUNT(*) FROM tutorials";
-$resulttut = mysqli_query($conn,$query);
-$rows = mysqli_fetch_row($resulttut);
+$query     = "SELECT COUNT(*) FROM tutorials";
+$resulttut = mysqli_query($conn, $query);
+$rows      = mysqli_fetch_row($resulttut);
 ?>
 <?php
 $page = 'home';
@@ -50,7 +50,7 @@ require_once 'templates/header.tpl.php';
                                         <!-- small card -->
                                         <div class="small-box bg-info">
                                             <div class="inner">
-                                                <h3><?= $rows[0] ?></h3>
+                                                <h3><?=$rows[0]?></h3>
 
                                                 <p>Tutorials</p>
                                             </div>
@@ -92,8 +92,8 @@ require_once 'templates/header.tpl.php';
             <!-- /.content-wrapper -->
 
             <?php
-                require_once 'templates/footer.tpl.php';
-            ?>
+require_once 'templates/footer.tpl.php';
+?>
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->

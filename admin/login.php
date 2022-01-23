@@ -1,10 +1,10 @@
 <?php
 include '../config.php';
 
-if (isset ($_GET['loggedout'])) {
-        if ($_GET['loggedout'] == 'true') {
-            $message = '<p class="alert alert-success">You have been successfully logged out</p>';
-        }
+if (isset($_GET['loggedout'])) {
+    if ($_GET['loggedout'] == 'true') {
+        $message = '<p class="alert alert-success">You have been successfully logged out</p>';
+    }
 }
 include 'authenticate.php';
 ?>
@@ -44,10 +44,10 @@ include 'authenticate.php';
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Sign in to start your session</p>
                     <?php
-                    if (isset($message)) {
-                        echo $message;
-                    }
-                    ?>
+if (isset($message)) {
+    echo $message;
+}
+?>
                     <form action="" method="post">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Username" name="username" required>

@@ -3,7 +3,6 @@ require '../config.php';
 
 session_start();
 
-
 if (!isset($_SESSION['loggedin'])) {
 
     header('Location: login.php');
@@ -16,7 +15,8 @@ $page = 'backup';
 require_once 'templates/header.tpl.php';
 ?>
 <?php
-function checkForMessage() {
+function checkForMessage()
+{
     if (isset($_GET['success'])) {
         echo '<p class="alert alert-success">Restore Completed!</p>';
     } else if (isset($_GET['error'])) {
@@ -58,7 +58,7 @@ function checkForMessage() {
                         <div class="card-body">
                             <a href="includes/export.php"><p class="btn btn-primary">Create Backup</p></a>
                             <h5>Restore</h5>
-                            <?= checkForMessage()?>
+                            <?=checkForMessage()?>
                             <form action="includes/import.php" method="post" enctype="multipart/form-data">
                                 <input type="file" name="fileToUpload" required>
                                 <input type="submit" value="Import" class="btn btn-primary">

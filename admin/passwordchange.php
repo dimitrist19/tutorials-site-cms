@@ -64,10 +64,10 @@ require_once 'templates/header.tpl.php';
                             <form class="form-horizontal" name="frmChange" method="post" action="" onSubmit="return validatePassword()">
                                 <div class="form-group row">
                                     <?php
-                                    if (isset($message)) {
-                                        echo $message;
-                                    }
-                                    ?>
+if (isset($message)) {
+    echo $message;
+}
+?>
                                 </div>
                                 <div class="form-group row">
                                     <label for="currentPassword" class="col-sm-2 col-form-label">Current Password</label>

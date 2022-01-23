@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/check.php';
 require 'config.php';
-$getSettings = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
+$getSettings  = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
 $getTutorials = mysqli_query($conn, "SELECT * FROM tutorials");
 
 session_start();
@@ -22,10 +22,10 @@ mysqli_close($conn);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="generator" content="MD">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-        <link rel="shortcut icon" href="<?= $settings['faviconurl'] ?>" type="image/x-icon">
-        <meta name="description" content="<?= $settings['hostname'] ?> | Web Hosting Video Tutorials">
+        <link rel="shortcut icon" href="<?=$settings['faviconurl']?>" type="image/x-icon">
+        <meta name="description" content="<?=$settings['hostname']?> | Web Hosting Video Tutorials">
 
-        <title><?= $settings['hostname'] ?> - Video Tutorials</title>
+        <title><?=$settings['hostname']?> - Video Tutorials</title>
         <link rel="stylesheet" href="assets/css/mobirise-icons.css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="assets/css/socicon-styles.css"/>
@@ -35,7 +35,7 @@ mysqli_close($conn);
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
         <link rel="preload" as="style" href="assets/css/mbr-additional.css"><link rel="stylesheet" href="assets/css/mbr-additional.css" type="text/css"/>
         <style>
-            <?= $settings['css_code']?>
+            <?=$settings['css_code']?>
         </style>
     </head>
     <body>
@@ -52,7 +52,7 @@ mysqli_close($conn);
                 <div class="menu-logo">
                     <div class="navbar-brand">
                         <span class="navbar-logo">
-                            <a href="index.php"><img src="<?= $settings['logourl'] ?>" alt="Logo" style="height: 3.8rem;"></a>
+                            <a href="index.php"><img src="<?=$settings['logourl']?>" alt="Logo" style="height: 3.8rem;"></a>
                         </span>
                         <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-1" href="index.php#header2-1"></a></span>
                     </div>
@@ -72,7 +72,7 @@ mysqli_close($conn);
                 <div class="row justify-content-md-center">
                     <div class="mbr-white col-md-10">
                         <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">Free Hosting Video Tutorials</h1>
-                        <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong><em><?= $settings['hostname'] ?> - Video Library</em></strong></p>
+                        <p class="mbr-text pb-3 mbr-fonts-style display-5"><strong><em><?=$settings['hostname']?> - Video Library</em></strong></p>
                         <div class="mbr-section-btn"><a class="btn btn-md btn-secondary display-4" href="tutorials.php">Click here to watch our video tutorials</a></div>
                     </div>
                 </div>
@@ -94,10 +94,10 @@ mysqli_close($conn);
                                 </div><br>
                                 <ul id="myUL">
                                     <?php
-                                    while ($tutorial = mysqli_fetch_array($getTutorials)) {
-                                        echo '<li><a href="tutorials.php?id=' . $tutorial['id'] . '">' . $tutorial['title'] . '</a></li>';
-                                    }
-                                    ?>
+while ($tutorial = mysqli_fetch_array($getTutorials)) {
+    echo '<li><a href="tutorials.php?id=' . $tutorial['id'] . '">' . $tutorial['title'] . '</a></li>';
+}
+?>
                                 </ul>
                     </div>
                 </div>
@@ -110,7 +110,7 @@ mysqli_close($conn);
                     <div class="col-12 col-md-3">
                         <div class="media-wrap">
                             <a href="index.php">
-                                <img src="<?= $settings['logourl'] ?>" alt="Logo">
+                                <img src="<?=$settings['logourl']?>" alt="Logo">
                             </a>
                         </div>
                     </div>
@@ -118,7 +118,7 @@ mysqli_close($conn);
                     </div>
                     <div class="col-12 col-md-3 mbr-fonts-style display-7">
                         <h5 class="pb-3">Links</h5>
-                        <p class="mbr-text"><a href="<?= $settings['homeurl'] ?>">Homepage</a><br><a href="<?= $settings['supporturl'] ?>" target="_blank">Support</a><br><a href="<?= $settings['knowledgebaseurl'] ?>" target="_blank">Knowledgebase</a><br></p>
+                        <p class="mbr-text"><a href="<?=$settings['homeurl']?>">Homepage</a><br><a href="<?=$settings['supporturl']?>" target="_blank">Support</a><br><a href="<?=$settings['knowledgebaseurl']?>" target="_blank">Knowledgebase</a><br></p>
                     </div>
                     <div class="col-12 col-md-3 mbr-fonts-style display-7">
                         <h5 class="pb-3"></h5>
@@ -134,7 +134,7 @@ mysqli_close($conn);
                     <div class="media-container-row mbr-white">
                         <div class="col-sm-6 copyright">
                             <p class="mbr-text mbr-fonts-style display-7">
-                                © Copyright 2022 <b><a href="<?= $settings['homeurl'] ?>"><?= $settings['hostname'] ?></a></b> - Tutorials Site CMS by <b><a href="https://github.com/dimitrist19">Dimitris T.</a></b>
+                                © Copyright 2022 <b><a href="<?=$settings['homeurl']?>"><?=$settings['hostname']?></a></b> - Tutorials Site CMS by <b><a href="https://github.com/dimitrist19">Dimitris T.</a></b>
                             </p>
                         </div>
                         <div class="col-md-6">

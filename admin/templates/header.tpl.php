@@ -3,14 +3,16 @@ if (file_exists('../includes/check.php')) {
     include '../includes/check.php';
 }
 
-function page_active($page_name) {
+function page_active($page_name)
+{
     global $page;
     if ($page_name == $page) {
         echo 'active';
     }
 }
 
-function pagetitle($page_name) {
+function pagetitle($page_name)
+{
     if ($page_name == 'home') {
         echo 'Admin Area';
     } else if ($page_name == 'about') {
@@ -38,7 +40,8 @@ function pagetitle($page_name) {
     }
 }
 
-function section_active($section_title) {
+function section_active($section_title)
+{
     global $page;
     $page_name = $page;
     if ($section_title == 'settings') {
@@ -71,9 +74,9 @@ function section_active($section_title) {
 }
 
 $getUserDetails = mysqli_query($conn, "SELECT * FROM users WHERE id={$_SESSION['id']}");
-$UserDetails = mysqli_fetch_array($getUserDetails);
-$getSettings = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
-$settings = mysqli_fetch_array($getSettings);
+$UserDetails    = mysqli_fetch_array($getUserDetails);
+$getSettings    = mysqli_query($conn, "SELECT * FROM config WHERE id= 1");
+$settings       = mysqli_fetch_array($getSettings);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,7 +85,7 @@ $settings = mysqli_fetch_array($getSettings);
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-        <title>Tutorials Site CMS | <?= pagetitle($page) ?></title>
+        <title>Tutorials Site CMS | <?=pagetitle($page)?></title>
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
@@ -151,20 +154,20 @@ $settings = mysqli_fetch_array($getSettings);
                             <img src="build/img/avatar.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="profile.php" class="d-block"><?= $UserDetails['fullname'] ?></a>
+                            <a href="profile.php" class="d-block"><?=$UserDetails['fullname']?></a>
                         </div>
                     </div>
                     <?php
-                    if (intval($settings['maintenance']) == 1) {
-                        echo '<p class="alert alert-info">Maintenance Mode Active!</p>';
-                    }
-                    ?>
+if (intval($settings['maintenance']) == 1) {
+    echo '<p class="alert alert-info">Maintenance Mode Active!</p>';
+}
+?>
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
                                  with font-awesome or any other icon font library -->
-                            <li class="nav-item has-treeview menu-<?= section_active('settings') ?>">
+                            <li class="nav-item has-treeview menu-<?=section_active('settings')?>">
                                 <a href="#" class="nav-link active">
                                     <i class="nav-icon fas fa-cog"></i>
                                     <p>
@@ -174,26 +177,26 @@ $settings = mysqli_fetch_array($getSettings);
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="configuration.php" class="nav-link <?= page_active('configuration') ?>">
+                                        <a href="configuration.php" class="nav-link <?=page_active('configuration')?>">
                                             <i class="fa fa-tools nav-icon"></i>
                                             <p>Configuration</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="profile.php" class="nav-link <?= page_active('user') ?>">
+                                        <a href="profile.php" class="nav-link <?=page_active('user')?>">
                                             <i class="fa fa-user-edit nav-icon"></i>
                                             <p>User Settings</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="backup.php" class="nav-link <?= page_active('backup') ?>">
+                                        <a href="backup.php" class="nav-link <?=page_active('backup')?>">
                                             <i class="fas fa-history nav-icon"></i>
                                             <p>Backup & Restore<span class="right badge badge-warning">BETA</span></p>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-                            <li class="nav-item has-treeview menu-<?= section_active('tutorials') ?>">
+                            <li class="nav-item has-treeview menu-<?=section_active('tutorials')?>">
                                 <a href="#" class="nav-link active">
                                     <i class="nav-icon fa fa-info-circle"></i>
                                     <p>
@@ -203,13 +206,13 @@ $settings = mysqli_fetch_array($getSettings);
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="tutorials.php" class="nav-link <?= page_active('tutorials') ?>">
+                                        <a href="tutorials.php" class="nav-link <?=page_active('tutorials')?>">
                                             <i class="fa fa-eye nav-icon"></i>
                                             <p>View All Tutorials</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="addnew.php" class="nav-link <?= page_active('addnew') ?>">
+                                        <a href="addnew.php" class="nav-link <?=page_active('addnew')?>">
                                             <i class="fa fa-plus-circle nav-icon"></i>
                                             <p>Add A New Tutorial</p>
                                         </a>
@@ -224,7 +227,7 @@ $settings = mysqli_fetch_array($getSettings);
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item has-treeview menu-<?= section_active('help') ?>">
+                            <li class="nav-item has-treeview menu-<?=section_active('help')?>">
                                 <a href="#" class="nav-link active">
                                     <i class="nav-icon fas fa-question"></i>
                                     <p>
@@ -234,13 +237,13 @@ $settings = mysqli_fetch_array($getSettings);
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="gettingstarted.php" class="nav-link <?= page_active('getting_started_guide') ?>">
+                                        <a href="gettingstarted.php" class="nav-link <?=page_active('getting_started_guide')?>">
                                             <i class="fa fa-book nav-icon"></i>
                                             <p>Getting Started</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="support.php" class="nav-link <?= page_active('support') ?>">
+                                        <a href="support.php" class="nav-link <?=page_active('support')?>">
                                             <i class="fa fa-envelope nav-icon"></i>
                                             <p>Support</p>
                                         </a>

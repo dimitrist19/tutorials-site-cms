@@ -8,7 +8,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
 // Database Connection
-require("../../config.php");
+require "../../config.php";
 
 // get Tutorials
 $query = "SELECT title, description, videourl, body FROM tutorials";
@@ -39,4 +39,3 @@ readfile($filename);
 
 // deleting file
 unlink($filename);
-?>

@@ -3,23 +3,23 @@ if (file_exists('config.php')) {
     include 'config.php';
     if (isset($version)) {
         $version_numerical = $version;
-        $version = 'V' . $version;
+        $version           = 'V' . $version;
     } else {
         $version = 'Unknown Version';
     }
 }
 if (isset($_GET['install'])) {
     $conffile = fopen("config.php", "w") or die("Unable to open configuration file!");
-    $data = '<?php
+    $data     = '<?php
             //DATABASE DETAILS
             $dbhost = "' . $_POST['dbhost'] . '";
             $dbuser = "' . $_POST['dbuser'] . '";
             $dbpass = "' . $_POST['dbpass'] . '";
             $dbname = "' . $_POST['dbname'] . '";
-            
+
             //DEBUGGING
             error_reporting(0); //Set to -1 if you want to see php errors
-            
+
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
             $version = 1.3;
@@ -49,16 +49,16 @@ if (isset($_GET['install'])) {
         $alert = '<p class="alert alert-danger">Configuration Does Not Exist. Please start with a <a href="install.php">new installation</a></p>';
     } else {
         $conffile = fopen("config.php", "w") or die("Unable to open configuration file!");
-        $data = '<?php
+        $data     = '<?php
             //DATABASE DETAILS
             $dbhost = "' . $dbhost . '";
             $dbuser = "' . $dbuser . '";
             $dbpass = "' . $dbpass . '";
             $dbname = "' . $dbname . '";
-            
+
             //DEBUGGING
             error_reporting(0); //Set to -1 if you want to see php errors
-            
+
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
             $version = 1.3;
@@ -106,12 +106,12 @@ if (isset($_GET['install'])) {
                 </a>
             </div>
             <?php
-            if (isset($_GET['install'])) {
-                echo $alert;
-            } else if (isset($_GET['update'])) {
-                echo $alert;
-            } else {
-                ?>
+if (isset($_GET['install'])) {
+    echo $alert;
+} else if (isset($_GET['update'])) {
+    echo $alert;
+} else {
+    ?>
                 <!-- /.login-logo -->
                 <div class="card">
                     <div class="card-body">
@@ -132,20 +132,20 @@ if (isset($_GET['install'])) {
                                     <div id="update" class="panel-collapse in collapse" style="">
                                         <div class="card-body">
                                             <?php
-                                            if (file_exists('config.php')) {
-                                                if ($version_numerical > 1.3 || $version_numerical == 1.3) {
-                                                    echo 'A newer version is already installed';
-                                                } else {
-                                                    ?>
-                                                    <p>This will update your installation from <?= $version ?> to V1.3 (It will not delete any data but you are advised to backup your database before update)</p>
+if (file_exists('config.php')) {
+        if ($version_numerical > 1.3 || $version_numerical == 1.3) {
+            echo 'A newer version is already installed';
+        } else {
+            ?>
+                                                    <p>This will update your installation from <?=$version?> to V1.3 (It will not delete any data but you are advised to backup your database before update)</p>
                                                     <a href="?update">Update Installation</a>
                                                     <p class="login-box-msg"><b>Warning! The updater may not work correctly as it's still in the testing phase. If you wish to safely update the CMS delete 'install.php' file and visit <a href="https://service.dtprojects.eu.org/support/knowledgebase.php?article=1">this page</a></b></p>
                                                     <?php
-                                                }
-                                            } else {
-                                                echo 'This installation cannot be updated';
-                                            }
-                                            ?>
+}
+    } else {
+        echo 'This installation cannot be updated';
+    }
+    ?>
                                         </div>
                                     </div>
                                 </div>
@@ -217,8 +217,8 @@ if (isset($_GET['install'])) {
                     </div>
                 </div>
                 <?php
-            }
-            ?>
+}
+?>
 
             <!-- jQuery -->
             <script src="admin/plugins/jquery/jquery.min.js"></script>

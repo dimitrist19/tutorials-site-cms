@@ -44,7 +44,7 @@ require_once 'templates/header.tpl.php';
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="card">
-                                    <h5 class="card-header">Welcome! This is a short guide on how to get started with 'Tutorials Site CMS V<?= $version?>':</h5>
+                                    <h5 class="card-header">Welcome! This is a short guide on how to get started with 'Tutorials Site CMS V<?=$version?>':</h5>
                                     <div class="card-body">
                                         <p>1) For security reasons change the admin's password <a href="profile.php">here</a></p>
                                         <p>2) Then go to <a href="config.php">Configuration</a> and replace name, logo, favicon etc. with your preferred one's.</p>
@@ -64,8 +64,8 @@ require_once 'templates/header.tpl.php';
             <!-- /.content-wrapper -->
 
             <?php
-            require_once 'templates/footer.tpl.php';
-            ?>
+require_once 'templates/footer.tpl.php';
+?>
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->

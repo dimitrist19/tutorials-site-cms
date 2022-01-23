@@ -17,8 +17,8 @@ include '../config.php';
 $result = mysqli_query($conn, "SELECT * FROM tutorials");
 ?>
 <?php
-    $page = 'tutorials';
-    require_once 'templates/header.tpl.php';
+$page = 'tutorials';
+require_once 'templates/header.tpl.php';
 ?>
 
             <!-- Content Wrapper. Contains page content -->
@@ -54,7 +54,7 @@ $result = mysqli_query($conn, "SELECT * FROM tutorials");
                                     <!-- /.card-header -->
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-sm-12">                
+                                            <div class="col-sm-12">
                                                 <table id="tutorialstable" class="table table-bordered table-striped">
                                                     <thead>
                                                         <tr role="row">
@@ -64,13 +64,13 @@ $result = mysqli_query($conn, "SELECT * FROM tutorials");
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        while ($row = mysqli_fetch_array($result)) {
-                                                            echo "<tr>";
-                                                            echo '<td>' . $row['title'] . '</td>';
-                                                            echo '<td><a href="edit.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i></a><a href="delete.php?id=' . $row['id'] . '">  <i class="fa fa-trash text-danger"></i></a><a target="_blank" href="../tutorials.php?id=' . $row['id'] . '">  <i class="fa fa-eye text-secondary"></i></a></td>';
-                                                            echo "</tr>";
-                                                        }
-                                                        ?>
+while ($row = mysqli_fetch_array($result)) {
+    echo "<tr>";
+    echo '<td>' . $row['title'] . '</td>';
+    echo '<td><a href="edit.php?id=' . $row['id'] . '"><i class="fa fa-edit"></i></a><a href="delete.php?id=' . $row['id'] . '">  <i class="fa fa-trash text-danger"></i></a><a target="_blank" href="../tutorials.php?id=' . $row['id'] . '">  <i class="fa fa-eye text-secondary"></i></a></td>';
+    echo "</tr>";
+}
+?>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -88,8 +88,8 @@ $result = mysqli_query($conn, "SELECT * FROM tutorials");
             <!-- /.content-wrapper -->
 
             <?php
-            require_once 'templates/footer.tpl.php';
-            ?>
+require_once 'templates/footer.tpl.php';
+?>
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->
