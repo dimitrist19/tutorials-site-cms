@@ -37,6 +37,8 @@ function pagetitle($page_name)
         echo 'Edit Tutorial';
     } else if ($page_name == 'backup') {
         echo 'Backup & Restore';
+    } else if ($page_name == 'password_change') {
+        echo 'Password Change';
     }
 }
 
