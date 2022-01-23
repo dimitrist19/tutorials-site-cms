@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 }
 include '../config.php';
 $result = mysqli_query($conn, "SELECT * FROM tutorials WHERE id= {$_GET['id']}");
-$row = mysqli_fetch_array($result);
+$row    = mysqli_fetch_array($result);
 //When form is submitted it updates the elements
 if (count($_POST) > 0) {
     mysqli_query($conn, "UPDATE tutorials SET title='" . $_POST["title"] . "' WHERE id= {$_POST['id']}");
@@ -21,7 +21,7 @@ if (count($_POST) > 0) {
 <?php
 session_start();
 $result = mysqli_query($conn, "SELECT * FROM tutorials WHERE id={$_GET['id']}");
-$row = mysqli_fetch_array($result);
+$row    = mysqli_fetch_array($result);
 ?>
 <?php
 // We need to use sessions, so you should always start sessions using the below code.
@@ -78,10 +78,10 @@ require_once 'templates/header.tpl.php';
                                         <div class="card-body">
                                             <input name="id" value="<?php echo $_GET['id']; ?>" hidden>
                                             <?php
-                                            if (isset($message)) {
-                                                echo '';
-                                            }
-                                            ?>
+if (isset($message)) {
+    echo '';
+}
+?>
                                             <p>Fiels marked with <b>*</b> are required. The fields that are not required, leave them blank and they won't appear in the website.</p>
                                             <div class="form-group">
                                                 <label for="title">* Tutorial Title</label>
@@ -101,7 +101,7 @@ require_once 'templates/header.tpl.php';
                                             </div>
                                             <div class="form-group">
                                                 <label for="body">How To / Further Explanation</label>
-                                                <textarea id="summernote" name="body"><?= $row['body'] ?></textarea>
+                                                <textarea id="summernote" name="body"><?=$row['body']?></textarea>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -122,8 +122,8 @@ require_once 'templates/header.tpl.php';
             <!-- /.content-wrapper -->
 
             <?php
-            require_once 'templates/footer.tpl.php';
-            ?>
+require_once 'templates/footer.tpl.php';
+?>
         <!-- ./wrapper -->
 
         <!-- REQUIRED SCRIPTS -->
