@@ -89,7 +89,7 @@ mysqli_close($conn);
                 <div class="media-container-row">
                     <div class="mbr-text col-12 col-md-8 mbr-fonts-style display-7">
                         <p><br><strong>What would you like to know ?</strong></p><p><strong>
-                                <div align="center" style="">
+                                <div align="center">
                                     <input style="width: 100%; height: 50px;" type="text" id="searchbar" onkeyup="search()" placeholder="Search for tutorials..." class="form-control"/>
                                 </div><br>
                                 <ul id="myUL">
