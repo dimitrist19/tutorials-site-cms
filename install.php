@@ -70,6 +70,9 @@ if (isset($_GET['install'])) {
         $alert = '<p class="alert alert-success">Success! Click <a href="admin">here</a> to continue to your site</p>';
         unlink('install.php');
     }
+} else if (isset($_GET['delete'])) {
+    $alert = '<p class="alert alert-success">Success! Click <a href="admin">here</a> to continue to your site</p>';
+    unlink('install.php');
 }
 ?>
 <!DOCTYPE html>
@@ -104,9 +107,7 @@ if (isset($_GET['install'])) {
                 </a>
             </div>
             <?php
-if (isset($_GET['install'])) {
-    echo $alert;
-} else if (isset($_GET['update'])) {
+if (isset($_GET['install']) || isset($_GET['update']) || isset($_GET['delete'])) {
     echo $alert;
 } else {
     ?>
@@ -132,7 +133,7 @@ if (isset($_GET['install'])) {
                                             <?php
 if (file_exists('config.php')) {
         if (version_compare($version_numerical, '1.3.1') >= 0) {
-            echo 'A newer version is already installed';
+            echo 'A newer version is already installed. <a href="?delete">Delete install.php file</a>';
         } else {
             ?>
                                                     <p>This will update your installation from <?=$version?> to V1.3.1 (It will not delete any data but you are advised to backup your database before update)</p>
