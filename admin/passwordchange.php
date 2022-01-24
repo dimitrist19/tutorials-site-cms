@@ -14,10 +14,12 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?php
 include '../config.php';
-$row = mysqli_fetch_array($result);
+$page = 'password_change';
+require_once 'templates/header.tpl.php';
+?>
+<?php
 if (count($_POST) > 0) {
-
-    if (password_verify($_POST["currentPassword"], $row['password']) == $row['password']) {
+    if (password_verify($_POST['currentPassword'], $UserDetails['password'])) {
         if ($_POST['currentPassword'] == $_POST['newPassword']) {
             $message = '<p class="alert alert-warning">New Password cannot be the same as your Old Password!</p>';
         } else {
@@ -29,11 +31,6 @@ if (count($_POST) > 0) {
     }
 }
 ?>
-<?php
-$page = 'password_change';
-require_once 'templates/header.tpl.php';
-?>
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
