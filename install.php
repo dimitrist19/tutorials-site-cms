@@ -22,7 +22,7 @@ if (isset($_GET['install'])) {
 
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
-            $version = 1.3.1;
+            $version = "1.3.1";
 
 ?>';
     fwrite($conffile, $data);
@@ -61,7 +61,7 @@ if (isset($_GET['install'])) {
 
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
-            $version = 1.3.1;
+            $version = "1.3.1";
 
 ?>';
         fwrite($conffile, $data);
