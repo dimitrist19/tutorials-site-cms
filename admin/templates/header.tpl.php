@@ -91,7 +91,7 @@ $settings       = mysqli_fetch_array($getSettings);
         <link rel="icon" href="https://icon-library.com/images/tutorial-icon-png/tutorial-icon-png-19.jpg">
 
         <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/adminlte.min.css">
         <!-- Google Font: Source Sans Pro -->
@@ -101,7 +101,7 @@ $settings       = mysqli_fetch_array($getSettings);
         <!-- DataTables -->
         <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote.min.css" rel="stylesheet">
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
