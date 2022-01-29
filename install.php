@@ -22,7 +22,7 @@ if (isset($_GET['install'])) {
 
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
-            $version = "1.3.1";
+            $version = "1.3.2";
 
 ?>';
     fwrite($conffile, $data);
@@ -61,7 +61,7 @@ if (isset($_GET['install'])) {
 
             //DO NOT EDIT
             $conn = mysqli_connect("{$dbhost}", "{$dbuser}", "{$dbpass}", "{$dbname}") or die("Connection Error: " . mysqli_error($conn));
-            $version = "1.3.1";
+            $version = "1.3.2";
 
 ?>';
         fwrite($conffile, $data);
@@ -132,11 +132,11 @@ if (isset($_GET['install']) || isset($_GET['update']) || isset($_GET['delete']))
                                         <div class="card-body">
                                             <?php
 if (file_exists('config.php')) {
-        if (version_compare($version_numerical, '1.3.1') >= 0) {
+        if (version_compare($version_numerical, '1.3.2') >= 0) {
             echo 'A newer version is already installed. <a href="?delete">Delete install.php file</a>';
         } else {
             ?>
-                                                    <p>This will update your installation from <?=$version?> to V1.3.1 (It will not delete any data but you are advised to backup your database before update)</p>
+                                                    <p>This will update your installation from <?=$version?> to V1.3.2 (It will not delete any data but you are advised to backup your database before update)</p>
                                                     <a href="?update">Update Installation</a>
                                                     <p class="login-box-msg"><b>Warning! The updater may not work correctly as it's still in the testing phase. If you wish to safely update the CMS delete 'install.php' file and visit <a href="https://service.dtprojects.eu.org/support/knowledgebase.php?article=1">this page</a></b></p>
                                                     <?php
