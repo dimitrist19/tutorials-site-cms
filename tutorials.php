@@ -83,10 +83,9 @@ if (!isset($_GET['id'])) {
 </section>';
     }
 } else if (isset($_GET['id'])) {
-    $getTutorialQuery = sprintf("SELECT CountryCode FROM City WHERE name='%s'", mysqli_real_escape_string($conn, $_GET['id']));
+    $getTutorialQuery = sprintf("SELECT * FROM tutorials WHERE id='%s'", mysqli_real_escape_string($conn, $_GET['id']));
     $getTutorialById  = mysqli_query($conn, $getTutorialQuery);
-    $singleTutorial   = mysqli_fetch_array($getTutorialById);
-    if (is_null($singleTutorial['id'])) {
+    if (mysqli_num_rows($getTutorialById) == 0) {
         echo '<section class="header7 cid-rEMpe1dCB9">
     <div class="container">
         <div class="media-container-row">
@@ -103,6 +102,7 @@ if (!isset($_GET['id'])) {
     </div>
 </section>';
     } else {
+        $singleTutorial   = mysqli_fetch_array($getTutorialById);
         echo '<section class="header7 cid-rEMpe1dCB9">
     <div class="container">
         <div class="media-container-row">
@@ -120,7 +120,7 @@ if (!isset($_GET['id'])) {
 </section>';
         ?>
                 <?php
-if (isset($singleTutorial['body']) && !empty(@$singleTutorial['body'])) {
+if (isset($singleTutorial['body']) && !empty(@$singleTutorial['body']) && $singleTutorial['body'] !== '') {
             echo '<div style="padding: 75px;">' . $singleTutorial['body'] . '</div>';
         }
     }
